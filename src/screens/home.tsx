@@ -1,5 +1,6 @@
 import React from 'react'
 import { Image, StyleSheet, Text, View, SafeAreaView, ScrollView } from 'react-native'
+import SplashScreen from 'react-native-splash-screen'
 import Post from '../components/post';
 
 const Home = () => {

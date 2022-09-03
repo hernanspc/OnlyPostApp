@@ -15,6 +15,7 @@ const App = () => {
 
   return (
     <SafeAreaProvider style={{ flex: 1 }}>
+      {/* <StatusBar translucent backgroundColor="transparent" barStyle="light-content" /> */}
       <Home />
     </SafeAreaProvider>
   );
