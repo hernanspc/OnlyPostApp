@@ -1,9 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Image, StyleSheet, Text, View, SafeAreaView, ScrollView } from 'react-native'
 import SplashScreen from 'react-native-splash-screen'
 import Post from '../components/post';
+import { useUserPaginated } from '../hooks/useUserPaginated';
 
 const Home = () => {
+
+    useEffect(() => {
+        SplashScreen.hide();
+    }, [])
+
+    useUserPaginated();
+
+
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView>
