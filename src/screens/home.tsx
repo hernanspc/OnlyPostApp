@@ -10,8 +10,8 @@ const Home = () => {
         SplashScreen.hide();
     }, [])
 
-    useUserPaginated();
-
+    const algo = useUserPaginated();
+    console.log('algo ', algo)
 
     return (
         <SafeAreaView style={styles.container}>

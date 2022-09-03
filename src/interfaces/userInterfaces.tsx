@@ -36,7 +36,7 @@ export interface SimpleUsers {
     username: string;
     picture: string;
     urlPost: string;
-    // publications: PostResponse;
+    publications: PostResponse;
 }
 
 export interface PostResponse {
