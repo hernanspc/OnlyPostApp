@@ -41,7 +41,7 @@ const Home = () => {
                     renderItem={(data => (
                         <PostCard
                             key={data.index}
-                            data={data.item} />
+                            user={data.item} />
                         // <Text>i</Text>
                     ))}
                 />

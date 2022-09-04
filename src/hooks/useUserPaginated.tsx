@@ -14,6 +14,7 @@ export const useUserPaginated = () => {
 
     const getPostsOfUser = async (id: number) => {
         const resp = await userApi.get(`https://jsonplaceholder.typicode.com/users/${id}/posts`);
+        // console.log('posts ', id, resp.data)
         return await resp.data;
     }
 
@@ -23,9 +24,12 @@ export const useUserPaginated = () => {
         const usersPostsPromises = filtered.map((user) => {
             return getPostsOfUser(user.id)
         })
+
         let allRealPosts: PostResponse[] = []
+
         const allPosts = await Promise.all(usersPostsPromises)
         allPosts.map(post => {
+            // postImg: "https://random.imagecdn.app/500/150"
             allRealPosts.push(...post)
         })
         const userPosts = filtered.map((user) => (

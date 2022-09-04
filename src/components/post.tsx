@@ -4,66 +4,33 @@ import Feather from 'react-native-vector-icons/Feather';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Ionic from 'react-native-vector-icons/Ionicons';
 import Entypo from 'react-native-vector-icons/Entypo';
-import { SimpleUsers } from '../interfaces/userInterfaces';
+import { PostResponse, SimpleUsers } from '../interfaces/userInterfaces';
 
 interface Props {
-    data: SimpleUsers;
+    user: SimpleUsers;
 }
 
-const PostCard = ({ data }: Props) => {
+const PostCard = ({ user }: Props) => {
 
-    const postData = [
-        {
-            postTitle: 'Luis Angel',
-            postPersonImage: require('../assets/images/profile2.jpg'),
-            postImage: require('../assets/images/post10.jpg'),
-            isUserProfile: require('../assets/images/profile2.jpg'),
-            likes: 765,
-            isLiked: false,
-        },
-        {
-            postTitle: 'Mark Zuckerberg',
-            postPersonImage: require('../assets/images/profile1.jpg'),
-            postImage: require('../assets/images/post2.jpg'),
-            isUserProfile: require('../assets/images/profile2.jpg'),
-            likes: 345,
-            isLiked: false,
-        },
-        {
-            postTitle: 'Tomy',
-            postPersonImage: require('../assets/images/profile2.jpg'),
-            postImage: require('../assets/images/post5.jpg'),
-            isUserProfile: require('../assets/images/profile2.jpg'),
-            likes: 734,
-            isLiked: false,
-        },
-        {
-            postTitle: 'Alvaro',
-            postPersonImage: require('../assets/images/profile1.jpg'),
-            postImage: require('../assets/images/post4.jpg'),
-            isUserProfile: require('../assets/images/profile2.jpg'),
-            likes: 875,
-            isLiked: false,
-        },
-    ];
+    const postData = user?.publications;
 
     return (
         <View>
             {/* data.puiblication */}
-            {postData.map((data, index) => {
-                const [like, setLike] = useState(data?.isLiked);
+            {postData?.map((post, index) => {
+                // const [like, setLike] = useState(data?.isLiked);
                 return (
                     <View key={index} style={styles.card}>
                         <View
                             style={styles.postHead}>
                             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                                 <Image
-                                    source={data.postPersonImage}
+                                    source={{ uri: user.picture }}
                                     style={{ width: 40, height: 40, borderRadius: 100 }}
                                 />
                                 <View style={{ paddingLeft: 5 }}>
                                     <Text style={{ fontSize: 15, fontWeight: 'bold' }}>
-                                        {data.postTitle}
+                                        {user.name}
                                     </Text>
 
                                     <Text style={{ fontSize: 13, color: "#B0B0B0" }}>13 weeks ago</Text>
@@ -72,21 +39,21 @@ const PostCard = ({ data }: Props) => {
                             <Feather name="more-vertical" style={{ fontSize: 20 }} />
                         </View>
                         <View style={{ marginHorizontal: 10 }}>
-                            <Text style={{ fontWeight: 'bold' }} >Titulo</Text>
+                            <Text style={{ fontWeight: 'bold' }} >{post.title}</Text>
                         </View>
                         <View style={{
                             marginHorizontal: 10,
                             marginVertical: 10
                         }}>
-                            <Text>Lorem ipsum, dolor sit amet consectetur adipisicing elit.💰</Text>
+                            <Text>{post.body}</Text>
                         </View>
                         <View style={styles.postImageContainer}>
                             <Image style={{ width: '95%', height: 200 }}
-                                source={data.postImage}
+                                source={{ uri: "https://images.unsplash.com/photo-1660839252554-f1a3dd7e8438?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=150&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY2MjMwNDY0Mg&ixlib=rb-1.2.1&q=80&w=500" }}
                             />
                         </View>
 
-                        <View style={styles.options}>
+                        {/* <View style={styles.options}>
                             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                                 <TouchableOpacity onPress={() => setLike(!like)}>
                                     <AntDesign name={like ? 'heart' : 'hearto'}
@@ -126,7 +93,7 @@ const PostCard = ({ data }: Props) => {
                                     />
                                 </View>
                             </View>
-                        </View>
+                        </View> */}
                     </View>
                 );
             })}
