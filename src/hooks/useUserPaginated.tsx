@@ -6,9 +6,8 @@ import { asyncFetchApi, fetchApiEffect } from '../utils/api';
 
 export const useUserPaginated = () => {
 
-    const [simpleUserList, setSimpleUserList] = useState<SimpleUsers[]>([])
-
     const loadUsers = async () => {
+        // console.log('kakasjasnadksada')
         const resp = await userApi.get(`https://jsonplaceholder.typicode.com/users`);
         mapUserList(resp.data);
     }
@@ -36,13 +35,11 @@ export const useUserPaginated = () => {
                 publications: allRealPosts.filter(publications => publications.userId === user.id).slice(0, 3)
             }
         ))
-        // AsyncStorage.setItem("@usersWithPost", JSON.stringify(userPosts));
-        // storeData(userPosts)
-        setSimpleUserList(userPosts)
+        saveStoreData(userPosts)
     }
 
-    const storeData = async (value: object) => {
-        console.log('LCCCCC');
+    const saveStoreData = async (value: object) => {
+        console.log('guardando')
         try {
             await AsyncStorage.setItem('@usersWithPost', JSON.stringify(value))
         } catch (e) {
@@ -50,11 +47,7 @@ export const useUserPaginated = () => {
         }
     }
 
-    useEffect(() => {
-        loadUsers();
-    }, [])
-
     return {
-        simpleUserList
+        loadUsers
     }
 }
