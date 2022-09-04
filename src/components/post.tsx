@@ -49,7 +49,7 @@ const PostCard = ({ user }: Props) => {
                         </View>
                         <View style={styles.postImageContainer}>
                             <Image style={{ width: '95%', height: 200 }}
-                                source={{ uri: "https://images.unsplash.com/photo-1660839252554-f1a3dd7e8438?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=150&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY2MjMwNDY0Mg&ixlib=rb-1.2.1&q=80&w=500" }}
+                                source={{ uri: "https://picsum.photos/200" }}
                             />
                         </View>
 
