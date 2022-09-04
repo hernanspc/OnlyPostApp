@@ -18,7 +18,7 @@ const PostCard = ({ user }: Props) => {
         <View>
             {/* data.puiblication */}
             {postData?.map((post, index) => {
-                // const [like, setLike] = useState(data?.isLiked);
+                const [like, setLike] = useState(user?.isLiked);
                 return (
                     <View key={index} style={styles.card}>
                         <View
@@ -53,7 +53,7 @@ const PostCard = ({ user }: Props) => {
                             />
                         </View>
 
-                        {/* <View style={styles.options}>
+                        <View style={styles.options}>
                             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                                 <TouchableOpacity onPress={() => setLike(!like)}>
                                     <AntDesign name={like ? 'heart' : 'hearto'}
@@ -76,7 +76,7 @@ const PostCard = ({ user }: Props) => {
                         <View style={{ paddingHorizontal: 15 }}>
                             <Text>
                                 {like ? 'Te' : 'Le'} gusta a {like ? 'ti y a' : ''}{' '}
-                                {like ? data.likes + 1 : data.likes} personas
+                                {user.likes ? like ? user.likes + 1 : user.likes : ""} personas
                             </Text>
                             <Text style={{ opacity: 0.4, paddingVertical: 2 }}>
                                 Ver todos los comentarios
@@ -85,7 +85,7 @@ const PostCard = ({ user }: Props) => {
                             <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                                     <Image style={styles.userLoggedProfile}
-                                        source={data.isUserProfile}
+                                        source={{ uri: user.loggedImageUser }}
                                     />
                                     <TextInput
                                         placeholder="Añadir un comentario "
@@ -93,7 +93,7 @@ const PostCard = ({ user }: Props) => {
                                     />
                                 </View>
                             </View>
-                        </View> */}
+                        </View>
                     </View>
                 );
             })}
