@@ -82,6 +82,17 @@ const PostCard = ({ data }: Props) => {
                             </View>
                             <Feather name="more-vertical" style={{ fontSize: 20 }} />
                         </View>
+                        <View style={{
+                            marginHorizontal: 10
+                        }}>
+                            <Text style={{ fontWeight: 'bold' }} >Titulo</Text>
+                        </View>
+                        <View style={{
+                            marginHorizontal: 10,
+                            marginVertical: 10
+                        }}>
+                            <Text>Lorem ipsum, dolor sit amet consectetur adipisicing elit.💰</Text>
+                        </View>
                         <View
                             style={{
                                 position: 'relative',
