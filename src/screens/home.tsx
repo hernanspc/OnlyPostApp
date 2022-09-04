@@ -42,7 +42,6 @@ const Home = () => {
                         <PostCard
                             key={data.index}
                             user={data.item} />
-                        // <Text>i</Text>
                     ))}
                 />
 

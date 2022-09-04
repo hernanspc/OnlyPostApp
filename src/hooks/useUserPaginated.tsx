@@ -14,8 +14,18 @@ export const useUserPaginated = () => {
 
     const getPostsOfUser = async (id: number) => {
         const resp = await userApi.get(`https://jsonplaceholder.typicode.com/users/${id}/posts`);
-        // console.log('posts ', id, resp.data)
-        return await resp.data;
+
+        const value = resp.data;
+
+        const filler = value.map((e: any, index: number) => (
+            {
+                ...e,
+                imagenPublicacion: "https://picsum.photos/200"
+            }
+        ));
+        // console.log('filler ', filler)
+
+        return await filler;
     }
 
     const mapUserList = async (userList: UsersResponse[]) => {
@@ -35,8 +45,12 @@ export const useUserPaginated = () => {
         const userPosts = filtered.map((user) => (
             {
                 ...user,
-                picture: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${user.id}.png`,
-                loggedImageUser: `https://lh3.googleusercontent.com/a-/AFdZucrOwceQ_OjcD2MAfsbNwzLIZ4IbqiPICm5nzBMl=s192-c-rg-br100`,
+                // picture: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${user.id}.png`,
+                picture: `https://res.cloudinary.com/dd0myqhyb/image/upload/v1662311578/OnlyPost/user${user.id}.jpg`,
+                // loggedImageUser: `https://lh3.googleusercontent.com/a-/AFdZucrOwceQ_OjcD2MAfsbNwzLIZ4IbqiPICm5nzBMl=s192-c-rg-br100`,
+                // loggedImageUser: `https://res.cloudinary.com/dd0myqhyb/image/upload/v1662308074/Zuckerberg_g2ni76.webp`,
+                loggedImageUser: `https://res.cloudinary.com/dd0myqhyb/image/upload/v1662308282/Mark_Zuckerberg_F8_2019_Keynote__32830578717___cropped_kgmnd1.jpg`,
+                // loggedImageUser: `https://res.cloudinary.com/dd0myqhyb/image/upload/v1662310301/OnlyPost/user0.jpg`,
                 publications: allRealPosts.filter(publications => publications.userId === user.id).slice(0, 3),
                 likes: 765,
                 isLiked: false,

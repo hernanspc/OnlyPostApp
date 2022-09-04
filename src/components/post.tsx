@@ -5,6 +5,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import Ionic from 'react-native-vector-icons/Ionicons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import { PostResponse, SimpleUsers } from '../interfaces/userInterfaces';
+import { capitalizarPrimeraLetra } from '../utils/functions/functions';
 
 interface Props {
     user: SimpleUsers;
@@ -13,16 +14,13 @@ interface Props {
 const PostCard = ({ user }: Props) => {
 
     const postData = user?.publications;
-
     return (
         <View>
-            {/* data.puiblication */}
             {postData?.map((post, index) => {
                 const [like, setLike] = useState(user?.isLiked);
                 return (
                     <View key={index} style={styles.card}>
-                        <View
-                            style={styles.postHead}>
+                        <View style={styles.postHead}>
                             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                                 <Image
                                     source={{ uri: user.picture }}
@@ -39,13 +37,10 @@ const PostCard = ({ user }: Props) => {
                             <Feather name="more-vertical" style={{ fontSize: 20 }} />
                         </View>
                         <View style={{ marginHorizontal: 10 }}>
-                            <Text style={{ fontWeight: 'bold' }} >{post.title}</Text>
+                            <Text style={{ fontWeight: 'bold' }} >{capitalizarPrimeraLetra(post.title)}</Text>
                         </View>
-                        <View style={{
-                            marginHorizontal: 10,
-                            marginVertical: 10
-                        }}>
-                            <Text>{post.body}</Text>
+                        <View style={styles.textBody}>
+                            <Text>{capitalizarPrimeraLetra(post.body)}</Text>
                         </View>
                         <View style={styles.postImageContainer}>
                             <Image style={{ width: '95%', height: 200 }}
@@ -62,9 +57,8 @@ const PostCard = ({ user }: Props) => {
                                         }]} />
                                 </TouchableOpacity>
                                 <TouchableOpacity>
-                                    <Ionic
+                                    <Ionic style={{ fontSize: 20, paddingRight: 10 }}
                                         name="ios-chatbubble-outline"
-                                        style={{ fontSize: 20, paddingRight: 10 }}
                                     />
                                 </TouchableOpacity>
                                 <TouchableOpacity>
@@ -128,8 +122,8 @@ const styles = StyleSheet.create({
         paddingVertical: 15,
     },
     userLoggedProfile: {
-        width: 25,
-        height: 25,
+        width: 34,
+        height: 34,
         borderRadius: 100,
         backgroundColor: 'orange',
         marginRight: 10,
@@ -137,5 +131,9 @@ const styles = StyleSheet.create({
     likedContainer: {
         paddingRight: 10,
         fontSize: 20,
+    },
+    textBody: {
+        marginHorizontal: 10,
+        marginVertical: 10
     }
 })

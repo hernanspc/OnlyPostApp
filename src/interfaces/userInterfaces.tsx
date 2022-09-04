@@ -36,7 +36,7 @@ export interface SimpleUsers {
     username: string;
     picture?: string;
     publications?: PostResponse[];
-    loggedImageUser?: string;
+    loggedImageUser: string;
     likes?: number,
     isLiked?: boolean,
 }
