@@ -9,7 +9,6 @@ import { SimpleUsers } from '../interfaces/userInterfaces';
 const Home = () => {
 
     const { loadUsers } = useUserPaginated();
-
     const [data, setData] = useState<SimpleUsers[]>([])
 
     useEffect(() => {
@@ -35,7 +34,7 @@ const Home = () => {
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView>
-                {/* <Post /> */}
+                <Post />
             </ScrollView>
         </SafeAreaView>
     )

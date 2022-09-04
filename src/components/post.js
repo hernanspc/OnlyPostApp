@@ -79,7 +79,7 @@ const Post = () => {
                             }}>
                             <Image
                                 source={data.postImage}
-                                style={{ width: '85%', height: 200 }}
+                                style={{ width: '95%', height: 200 }}
                             />
                         </View>
                         <View
