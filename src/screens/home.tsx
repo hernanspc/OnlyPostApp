@@ -32,42 +32,10 @@ const Home = () => {
         }
     };
 
-    // const removeItemStorage = async () => {
-    //     AsyncStorage.removeItem('@usersWithPost');
-    // }
-
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView>
                 {/* <Post /> */}
-                {/* <Button onPress={removeItemStorage}
-                    title="Borrar" />
-
-                <Button onPress={
-                    async () => {
-                        const jsonValue = await AsyncStorage.getItem('@usersWithPost')
-                        console.log('jsonValue ', jsonValue)
-                    }
-                }
-                    title="leer datos storage"
-
-                />
-
-                <Button onPress={() => {
-                    loadUsers();
-                    checkUserInStorage();
-                }
-                } title="volver a cargar" />
-
-                <Button onPress={
-                    () => {
-                        // data.map((item) => {
-                        //     console.log('item ', item.id)
-                        // })
-                        console.log('data ', data)
-                    }
-                } title="imprimir datos de state data" /> */}
-
             </ScrollView>
         </SafeAreaView>
     )
