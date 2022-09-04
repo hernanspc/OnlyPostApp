@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { useEffect, useState } from 'react';
 import { userApi } from '../api/userApi';
 import { UsersResponse, SimpleUsers, PostResponse } from '../interfaces/userInterfaces';
@@ -35,7 +36,18 @@ export const useUserPaginated = () => {
                 publications: allRealPosts.filter(publications => publications.userId === user.id).slice(0, 3)
             }
         ))
+        // AsyncStorage.setItem("@usersWithPost", JSON.stringify(userPosts));
+        // storeData(userPosts)
         setSimpleUserList(userPosts)
+    }
+
+    const storeData = async (value: object) => {
+        console.log('LCCCCC');
+        try {
+            await AsyncStorage.setItem('@usersWithPost', JSON.stringify(value))
+        } catch (e) {
+            return (e)
+        }
     }
 
     useEffect(() => {
