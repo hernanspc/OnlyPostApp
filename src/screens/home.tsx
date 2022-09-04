@@ -10,6 +10,7 @@ const Home = () => {
         SplashScreen.hide();
     }, [])
 
+
     const algo = useUserPaginated();
     console.log('algo ', algo)
 

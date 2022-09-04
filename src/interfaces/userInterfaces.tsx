@@ -34,9 +34,8 @@ export interface SimpleUsers {
     id: number;
     name: string;
     username: string;
-    picture: string;
-    urlPost: string;
-    publications: PostResponse;
+    picture?: string;
+    publications?: PostResponse[];
 }
 
 export interface PostResponse {
