@@ -53,20 +53,9 @@ const PostCard = ({ data }: Props) => {
             {postData.map((data, index) => {
                 const [like, setLike] = useState(data?.isLiked);
                 return (
-                    <View
-                        key={index}
-                        style={{
-                            paddingBottom: 10,
-                            borderBottomColor: 'gray',
-                            borderBottomWidth: 0.1,
-                        }}>
+                    <View key={index} style={styles.card}>
                         <View
-                            style={{
-                                flexDirection: 'row',
-                                alignItems: 'center',
-                                justifyContent: 'space-between',
-                                padding: 15,
-                            }}>
+                            style={styles.postHead}>
                             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                                 <Image
                                     source={data.postPersonImage}
@@ -82,9 +71,7 @@ const PostCard = ({ data }: Props) => {
                             </View>
                             <Feather name="more-vertical" style={{ fontSize: 20 }} />
                         </View>
-                        <View style={{
-                            marginHorizontal: 10
-                        }}>
+                        <View style={{ marginHorizontal: 10 }}>
                             <Text style={{ fontWeight: 'bold' }} >Titulo</Text>
                         </View>
                         <View style={{
@@ -93,35 +80,19 @@ const PostCard = ({ data }: Props) => {
                         }}>
                             <Text>Lorem ipsum, dolor sit amet consectetur adipisicing elit.💰</Text>
                         </View>
-                        <View
-                            style={{
-                                position: 'relative',
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                            }}>
-                            <Image
+                        <View style={styles.postImageContainer}>
+                            <Image style={{ width: '95%', height: 200 }}
                                 source={data.postImage}
-                                style={{ width: '95%', height: 200 }}
                             />
                         </View>
-                        <View
-                            style={{
-                                flexDirection: 'row',
-                                justifyContent: 'space-between',
-                                alignItems: 'center',
-                                paddingHorizontal: 12,
-                                paddingVertical: 15,
-                            }}>
+
+                        <View style={styles.options}>
                             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                                 <TouchableOpacity onPress={() => setLike(!like)}>
-                                    <AntDesign
-                                        name={like ? 'heart' : 'hearto'}
-                                        style={{
-                                            paddingRight: 10,
-                                            fontSize: 20,
+                                    <AntDesign name={like ? 'heart' : 'hearto'}
+                                        style={[styles.likedContainer, {
                                             color: like ? 'red' : 'black',
-                                        }}
-                                    />
+                                        }]} />
                                 </TouchableOpacity>
                                 <TouchableOpacity>
                                     <Ionic
@@ -143,18 +114,11 @@ const PostCard = ({ data }: Props) => {
                             <Text style={{ opacity: 0.4, paddingVertical: 2 }}>
                                 Ver todos los comentarios
                             </Text>
-                            <View
-                                style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+
+                            <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                                    <Image
+                                    <Image style={styles.userLoggedProfile}
                                         source={data.isUserProfile}
-                                        style={{
-                                            width: 25,
-                                            height: 25,
-                                            borderRadius: 100,
-                                            backgroundColor: 'orange',
-                                            marginRight: 10,
-                                        }}
                                     />
                                     <TextInput
                                         placeholder="Añadir un comentario "
@@ -172,4 +136,39 @@ const PostCard = ({ data }: Props) => {
 
 export default PostCard
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    card: {
+        paddingBottom: 10,
+        borderBottomColor: 'gray',
+        borderBottomWidth: 0.1,
+    },
+    postHead: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        padding: 15,
+    },
+    postImageContainer: {
+        position: 'relative',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    options: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        paddingHorizontal: 12,
+        paddingVertical: 15,
+    },
+    userLoggedProfile: {
+        width: 25,
+        height: 25,
+        borderRadius: 100,
+        backgroundColor: 'orange',
+        marginRight: 10,
+    },
+    likedContainer: {
+        paddingRight: 10,
+        fontSize: 20,
+    }
+})
