@@ -36,6 +36,9 @@ export interface SimpleUsers {
     username: string;
     picture?: string;
     publications?: PostResponse[];
+    loggedImageUser?: string;
+    likes?: number,
+    isLiked?: boolean,
 }
 
 export interface PostResponse {

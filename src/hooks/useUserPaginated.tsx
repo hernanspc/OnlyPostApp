@@ -32,9 +32,13 @@ export const useUserPaginated = () => {
             {
                 ...user,
                 picture: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${user.id}.png`,
-                publications: allRealPosts.filter(publications => publications.userId === user.id).slice(0, 3)
+                loggedImageUser: `https://lh3.googleusercontent.com/a-/AFdZucrOwceQ_OjcD2MAfsbNwzLIZ4IbqiPICm5nzBMl=s192-c-rg-br100`,
+                publications: allRealPosts.filter(publications => publications.userId === user.id).slice(0, 3),
+                likes: 765,
+                isLiked: false,
             }
         ))
+        console.log('userPosts ', userPosts)
         saveStoreData(userPosts)
     }
 

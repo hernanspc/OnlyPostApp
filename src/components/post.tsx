@@ -4,13 +4,20 @@ import Feather from 'react-native-vector-icons/Feather';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Ionic from 'react-native-vector-icons/Ionicons';
 import Entypo from 'react-native-vector-icons/Entypo';
+import { SimpleUsers } from '../interfaces/userInterfaces';
 
-const Post = () => {
+interface Props {
+    data: SimpleUsers;
+}
+
+const PostCard = ({ data }: Props) => {
+
     const postData = [
         {
             postTitle: 'Luis Angel',
             postPersonImage: require('../assets/images/profile2.jpg'),
             postImage: require('../assets/images/post10.jpg'),
+            isUserProfile: require('../assets/images/profile2.jpg'),
             likes: 765,
             isLiked: false,
         },
@@ -18,6 +25,7 @@ const Post = () => {
             postTitle: 'Mark Zuckerberg',
             postPersonImage: require('../assets/images/profile1.jpg'),
             postImage: require('../assets/images/post2.jpg'),
+            isUserProfile: require('../assets/images/profile2.jpg'),
             likes: 345,
             isLiked: false,
         },
@@ -25,6 +33,7 @@ const Post = () => {
             postTitle: 'Tomy',
             postPersonImage: require('../assets/images/profile2.jpg'),
             postImage: require('../assets/images/post5.jpg'),
+            isUserProfile: require('../assets/images/profile2.jpg'),
             likes: 734,
             isLiked: false,
         },
@@ -32,6 +41,7 @@ const Post = () => {
             postTitle: 'Alvaro',
             postPersonImage: require('../assets/images/profile1.jpg'),
             postImage: require('../assets/images/post4.jpg'),
+            isUserProfile: require('../assets/images/profile2.jpg'),
             likes: 875,
             isLiked: false,
         },
@@ -39,8 +49,9 @@ const Post = () => {
 
     return (
         <View>
+            {/* data.puiblication */}
             {postData.map((data, index) => {
-                const [like, setLike] = useState(data.isLiked);
+                const [like, setLike] = useState(data?.isLiked);
                 return (
                     <View
                         key={index}
@@ -125,7 +136,7 @@ const Post = () => {
                                 style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                                     <Image
-                                        source={data.postPersonImage}
+                                        source={data.isUserProfile}
                                         style={{
                                             width: 25,
                                             height: 25,
@@ -148,6 +159,6 @@ const Post = () => {
     )
 }
 
-export default Post
+export default PostCard
 
 const styles = StyleSheet.create({})

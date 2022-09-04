@@ -1,8 +1,9 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { useEffect, useState } from 'react'
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { FlashList } from '@shopify/flash-list';
 import { Image, StyleSheet, Text, View, SafeAreaView, ScrollView, Button } from 'react-native'
 import SplashScreen from 'react-native-splash-screen'
-import Post from '../components/post';
+import PostCard from '../components/post';
 import { useUserPaginated } from '../hooks/useUserPaginated';
 import { SimpleUsers } from '../interfaces/userInterfaces';
 
@@ -34,7 +35,17 @@ const Home = () => {
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView>
-                <Post />
+                <FlashList
+                    data={data}
+                    keyExtractor={({ id }) => id}
+                    renderItem={(data => (
+                        <PostCard
+                            key={data.index}
+                            data={data.item} />
+                        // <Text>i</Text>
+                    ))}
+                />
+
             </ScrollView>
         </SafeAreaView>
     )
