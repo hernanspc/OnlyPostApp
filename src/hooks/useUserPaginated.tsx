@@ -35,12 +35,11 @@ export const useUserPaginated = () => {
             {
                 ...u,
                 picture: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${u.id}.png`,
-                publications: allRealPosts.filter(p => p.userId === u.id)
+                publications: allRealPosts.filter(publications => publications.userId === u.id).slice(0, 3)
             }
         ))
         console.log("userPosts ", userPosts)
         setSimpleUserList(userPosts)
-
     }
 
     useEffect(() => {
