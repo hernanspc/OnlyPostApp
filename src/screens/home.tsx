@@ -26,7 +26,6 @@ const Home = () => {
             } else {
                 setData(JSON.parse(jsonValue))
             }
-
         } catch (e) {
             return e
         }
@@ -37,7 +36,7 @@ const Home = () => {
             <ScrollView>
                 <FlashList
                     data={data}
-                    keyExtractor={({ id }) => id}
+                    keyExtractor={({ id }) => id.toString()}
                     renderItem={(data => (
                         <PostCard
                             key={data.index}
