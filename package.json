@@ -66,6 +66,9 @@
     "setupFilesAfterEnv": [
       "./setupTest.js"
     ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!@react-native|react-native)"
+    ],
     "testEnvironment": "enzyme",
     "testEnvironmentOptions": {
       "enzymeAdapter": "react18"
