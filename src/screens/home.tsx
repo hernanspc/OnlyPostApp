@@ -8,7 +8,6 @@ import { useUserPaginated } from '../hooks/useUserPaginated';
 import { SimpleUsers } from '../interfaces/userInterfaces';
 import Feather from "react-native-vector-icons/Feather";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
-import Stories from '../components/stories';
 import SearchBox from '../components/searchBox';
 
 const Home = () => {
@@ -21,7 +20,6 @@ const Home = () => {
         checkUserInStorage();
         SplashScreen.hide();
     }, [])
-
 
     const checkUserInStorage = async () => {
         try {

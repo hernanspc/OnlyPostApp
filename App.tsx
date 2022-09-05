@@ -14,9 +14,7 @@ import Home from './src/screens/home';
 const App = () => {
 
   return (
-    // <SafeAreaProvider style={{ flex: 1 }}>
     <Home />
-    // </SafeAreaProvider>
   );
 };
 
