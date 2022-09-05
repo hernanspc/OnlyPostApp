@@ -15,6 +15,7 @@ const Home = () => {
 
     const { loadUsers } = useUserPaginated();
     const [data, setData] = useState<SimpleUsers[]>([])
+    const [refreshing, setRefreshing] = useState<boolean>(false);
 
     useEffect(() => {
         loadUsers();
@@ -35,11 +36,18 @@ const Home = () => {
         }
     };
 
+    const onRefresh = async () => {
+        setRefreshing(true);
+        await loadUsers();
+        await checkUserInStorage();
+        setRefreshing(false);
+    }
+
     return (
         <SafeAreaView style={styles.container}>
             <View style={{
                 // backgroundColor: 'white', height: '100%'
-                width: '100%',
+                // width: '100%',
                 height: '100%',
                 backgroundColor: 'white',
                 position: 'relative',
@@ -69,22 +77,23 @@ const Home = () => {
                     </Text>
                     <Feather name="navigation" style={{ fontSize: 24 }} />
                 </View>
-                <ScrollView>
-                    <Stories />
-                    <ScrollView showsVerticalScrollIndicator={false}>
-                        <SearchBox />
-                    </ScrollView>
-                    <FlashList
-                        data={data}
-                        keyExtractor={({ id }) => id.toString()}
-                        renderItem={(data => (
+
+                <FlashList
+                    data={data}
+                    renderItem={(data => (
+                        <>
+                            <Stories />
                             <PostCard
                                 key={data.index}
                                 user={data.item} />
-                        ))}
-                    />
+                        </>
 
-                </ScrollView>
+                    ))}
+                    keyExtractor={({ id }) => id.toString()}
+                    showsVerticalScrollIndicator={false}
+                    refreshing={refreshing}
+                    onRefresh={onRefresh}
+                />
             </View>
         </SafeAreaView>
     )

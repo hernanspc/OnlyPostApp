@@ -16,6 +16,11 @@ const PostCard = ({ user }: Props) => {
     const postData = user?.publications;
     return (
         <View>
+            <Text style={{
+                marginHorizontal: 10, fontSize: 14, fontWeight: 'bold', textDecorationLine: 'underline'
+            }}>
+                User {user.id}
+            </Text>
             {postData?.map((post, index) => {
                 const [like, setLike] = useState(user?.isLiked);
                 return (
@@ -27,9 +32,7 @@ const PostCard = ({ user }: Props) => {
                                     style={{ width: 40, height: 40, borderRadius: 100 }}
                                 />
                                 <View style={{ paddingLeft: 5 }}>
-                                    <Text style={{ fontSize: 14, fontWeight: 'bold', textDecorationLine: 'underline' }}>
-                                        User {user.id}
-                                    </Text>
+
                                     <Text style={{ fontSize: 13, fontWeight: 'bold' }}>
                                         {user.name}
                                     </Text>

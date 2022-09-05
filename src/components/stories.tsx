@@ -54,7 +54,7 @@ const Stories = () => {
     return (
         <ScrollView
             horizontal={true}
-            showsHorizontalScrollIndicator={false}
+            // showsHorizontalScrollIndicator={false}
             style={{ paddingVertical: 20 }}>
             {storyInfo.map((data, index) => {
                 return (
