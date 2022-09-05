@@ -51,7 +51,7 @@ const Home = () => {
                     <FontAwesome name="plus-square-o" style={{ fontSize: 24 }} />
                     <Text
                         style={{
-                            // fontFamily: 'Lobster-Regular',
+                            fontFamily: 'Lobster-Regular',
                             fontSize: 25,
                             fontWeight: '500',
                         }}>
