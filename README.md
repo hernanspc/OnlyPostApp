@@ -64,4 +64,5 @@ Las instrucciones sobre cómo usar los plugins en su propia aplicación están v
 
 <img src="https://raw.githubusercontent.com/hernanspc/OnlyPostApp/main/src/assets/screenshots/Simulator%20Screen%20Shot%20-%20iPhone%2013%20-%202022-09-05%20at%2003.18.17.png" width="400">
 
+<img src="https://raw.githubusercontent.com/hernanspc/OnlyPostApp/main/src/assets/screenshots/Screenshot_1662389089.png" width="400">
 
