@@ -112,7 +112,7 @@ const Home = () => {
                                         letterSpacing: 1,
                                         opacity: 0.8,
                                     }}>
-                                    Cargar Datos
+                                    Cargar Publicaciones
                                 </Text>
                             </View>
                         </TouchableOpacity>
