@@ -54,8 +54,8 @@ const Stories = () => {
     return (
         <ScrollView
             horizontal={true}
-            // showsHorizontalScrollIndicator={false}
-            style={{ paddingVertical: 20 }}>
+            showsHorizontalScrollIndicator={false}
+            style={{ paddingVertical: 20, }}>
             {storyInfo.map((data, index) => {
                 return (
                     <TouchableOpacity

@@ -13,12 +13,11 @@ import SearchBox from '../components/searchBox';
 
 const Home = () => {
 
-    const { loadUsers } = useUserPaginated();
-    const [data, setData] = useState<SimpleUsers[]>([])
+    const { simpleUserList } = useUserPaginated();
     const [refreshing, setRefreshing] = useState<boolean>(false);
+    const [data, setData] = useState<SimpleUsers[]>([])
 
     useEffect(() => {
-        loadUsers();
         checkUserInStorage();
         SplashScreen.hide();
     }, [])
@@ -26,6 +25,7 @@ const Home = () => {
     const checkUserInStorage = async () => {
         try {
             const jsonValue = await AsyncStorage.getItem('@usersWithPost')
+            console.log('jsonValue ', JSON.stringify(jsonValue))
             if (!jsonValue) {
                 return;
             } else {
@@ -36,10 +36,14 @@ const Home = () => {
         }
     };
 
+    const setUserItems = async () => {
+        console.log("simpleUserList", simpleUserList)
+    }
+
     const onRefresh = async () => {
         setRefreshing(true);
-        await loadUsers();
         await checkUserInStorage();
+        await setUserItems();
         setRefreshing(false);
     }
 
@@ -77,12 +81,12 @@ const Home = () => {
                     </Text>
                     <Feather name="navigation" style={{ fontSize: 24 }} />
                 </View>
-
+                <SearchBox />
                 <FlashList
                     data={data}
                     renderItem={(data => (
                         <>
-                            <Stories />
+
                             <PostCard
                                 key={data.index}
                                 user={data.item} />
