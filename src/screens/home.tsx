@@ -27,8 +27,10 @@ const Home = () => {
         try {
             const jsonValue = await AsyncStorage.getItem('@usersWithPost')
             if (!jsonValue) {
+                console.log('no hay storage')
                 return;
             } else {
+                console.log('si hay storage')
                 setData(JSON.parse(jsonValue))
             }
         } catch (e) {
@@ -38,7 +40,9 @@ const Home = () => {
 
     const onRefresh = async () => {
         setRefreshing(true);
-        await checkUserInStorage();
+        // await checkUserInStorage();
+        const jsonValue = await AsyncStorage.getItem('@usersWithPost')
+        setData(JSON.parse(jsonValue))
         await loadUsers();
         setRefreshing(false);
     }

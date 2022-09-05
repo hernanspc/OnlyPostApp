@@ -17,7 +17,8 @@ const PostCard = ({ user }: Props) => {
     return (
         <View>
             <Text style={{
-                marginHorizontal: 10, fontSize: 14, fontWeight: 'bold', textDecorationLine: 'underline'
+                marginHorizontal: 10, fontSize: 15, fontWeight: 'bold', textDecorationLine: 'underline',
+                fontFamily: 'Lobster-Regular',
             }}>
                 User {user.id}
             </Text>
