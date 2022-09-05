@@ -2,7 +2,10 @@ import React from 'react';
 import { View, Text } from 'react-native'
 import { shallow } from 'enzyme';
 import PostCard from '../post';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
+const result = 'I was Pressed';
+const mockFn = jest.fn(() => result);
 describe('Testing Component SearchBox', () => {
 
     const dataMock = [
