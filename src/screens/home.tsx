@@ -27,6 +27,7 @@ const Home = () => {
             if (!jsonValue) {
                 return;
             } else {
+                console.log('JSON.parse(jsonValue) ', (jsonValue))
                 setData(JSON.parse(jsonValue))
             }
         } catch (e) {
