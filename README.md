@@ -58,4 +58,4 @@ Las instrucciones sobre cómo usar los plugins en su propia aplicación están v
 
 
   
-![Simulator Screen Shot - iPhone 13 - 2022-09-05 at 03 18 41](https://user-images.githubusercontent.com/58519791/188471245-9d41ab02-a409-42ac-a9bb-a4423d8e5aac.png)
+![Simulator Screen Shot - iPhone 13 - 2022-09-05 at 03 18 41](https://user-images.githubusercontent.com/58519791/188471245-9d41ab02-a409-42ac-a9bb-a4423d8e5aac.png=200x200)
