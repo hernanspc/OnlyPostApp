@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { FlashList } from '@shopify/flash-list';
-import { Image, StyleSheet, Text, View, SafeAreaView, ScrollView, Button, StatusBar } from 'react-native'
+import { Image, StyleSheet, Text, View, SafeAreaView, ScrollView, Button, StatusBar, TouchableOpacity } from 'react-native'
 import SplashScreen from 'react-native-splash-screen'
 import PostCard from '../components/post';
 import { useUserPaginated } from '../hooks/useUserPaginated';
@@ -78,18 +78,51 @@ const Home = () => {
                     <Feather name="navigation" style={{ fontSize: 24 }} />
                 </View>
                 <SearchBox />
-                <FlashList
-                    data={data}
-                    renderItem={(data => (
-                        <PostCard
-                            key={data.index}
-                            user={data.item} />
-                    ))}
-                    keyExtractor={({ id }) => id.toString()}
-                    showsVerticalScrollIndicator={false}
-                    refreshing={refreshing}
-                    onRefresh={onRefresh}
-                />
+                {data.length > 0 ?
+                    <FlashList
+                        data={data}
+                        renderItem={(data => (
+                            <PostCard
+                                key={data.index}
+                                user={data.item} />
+                        ))}
+                        keyExtractor={({ id }) => id.toString()}
+                        showsVerticalScrollIndicator={false}
+                        refreshing={refreshing}
+                        onRefresh={onRefresh}
+                    />
+                    :
+                    <View>
+                        <TouchableOpacity
+                            onPress={onRefresh}
+                            style={{
+                                width: '100%',
+                            }}>
+                            <View
+                                style={{
+                                    width: '100%',
+                                    height: 35,
+                                    borderRadius: 5,
+                                    borderColor: '#DEDEDE',
+                                    borderWidth: 1,
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                }}>
+                                <Text
+                                    style={{
+                                        fontWeight: 'bold',
+                                        fontSize: 14,
+                                        letterSpacing: 1,
+                                        opacity: 0.8,
+                                    }}>
+                                    Cargar Datos
+                                </Text>
+                            </View>
+                        </TouchableOpacity>
+                    </View>
+                }
+
+
             </View>
         </SafeAreaView>
     )
