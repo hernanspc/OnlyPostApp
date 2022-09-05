@@ -8,6 +8,7 @@ import { useUserPaginated } from '../hooks/useUserPaginated';
 import { SimpleUsers } from '../interfaces/userInterfaces';
 import Feather from "react-native-vector-icons/Feather";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
+import Stories from '../components/stories';
 
 const Home = () => {
 
@@ -60,6 +61,7 @@ const Home = () => {
                     <Feather name="navigation" style={{ fontSize: 24 }} />
                 </View>
                 <ScrollView>
+                    <Stories />
                     <FlashList
                         data={data}
                         keyExtractor={({ id }) => id.toString()}
