@@ -56,7 +56,9 @@ Las instrucciones sobre cómo usar los plugins en su propia aplicación están v
 | Axios | https://axios-http.com/docs/intro |
 | TypeScript | https://www.typescriptlang.org/ |
 
+## LINK PUBLISHED FOR ANDROID
 
+https://install.appcenter.ms/users/iphone1198-icloud.com/apps/onlypostapp/distribution_groups/todo%20el%20mundo
  
 ## ScreenShot IOS
 
