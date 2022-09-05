@@ -13,7 +13,7 @@ import SearchBox from '../components/searchBox';
 
 const Home = () => {
 
-    const { simpleUserList } = useUserPaginated();
+    const { simpleUserList, loadUsers } = useUserPaginated();
     const [refreshing, setRefreshing] = useState<boolean>(false);
     const [data, setData] = useState<SimpleUsers[]>([])
 
@@ -25,7 +25,6 @@ const Home = () => {
     const checkUserInStorage = async () => {
         try {
             const jsonValue = await AsyncStorage.getItem('@usersWithPost')
-            console.log('jsonValue ', JSON.stringify(jsonValue))
             if (!jsonValue) {
                 return;
             } else {
@@ -36,14 +35,10 @@ const Home = () => {
         }
     };
 
-    const setUserItems = async () => {
-        console.log("simpleUserList", simpleUserList)
-    }
-
     const onRefresh = async () => {
         setRefreshing(true);
         await checkUserInStorage();
-        await setUserItems();
+        await loadUsers();
         setRefreshing(false);
     }
 
@@ -85,13 +80,9 @@ const Home = () => {
                 <FlashList
                     data={data}
                     renderItem={(data => (
-                        <>
-
-                            <PostCard
-                                key={data.index}
-                                user={data.item} />
-                        </>
-
+                        <PostCard
+                            key={data.index}
+                            user={data.item} />
                     ))}
                     keyExtractor={({ id }) => id.toString()}
                     showsVerticalScrollIndicator={false}
