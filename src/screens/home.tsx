@@ -27,10 +27,8 @@ const Home = () => {
         try {
             const jsonValue = await AsyncStorage.getItem('@usersWithPost')
             if (!jsonValue) {
-                console.log('no hay storage')
                 return;
             } else {
-                console.log('si hay storage')
                 setData(JSON.parse(jsonValue))
             }
         } catch (e) {
@@ -40,9 +38,7 @@ const Home = () => {
 
     const onRefresh = async () => {
         setRefreshing(true);
-        // await checkUserInStorage();
-        const jsonValue = await AsyncStorage.getItem('@usersWithPost')
-        setData(JSON.parse(jsonValue))
+        await checkUserInStorage();
         await loadUsers();
         setRefreshing(false);
     }
@@ -50,8 +46,6 @@ const Home = () => {
     return (
         <SafeAreaView style={styles.container}>
             <View style={{
-                // backgroundColor: 'white', height: '100%'
-                // width: '100%',
                 height: '100%',
                 backgroundColor: 'white',
                 position: 'relative',
@@ -61,7 +55,6 @@ const Home = () => {
                     barStyle="dark-content"
                     animated={true}
                 />
-                {/* <StatusBar translucent backgroundColor="transparent" barStyle="light-content" /> */}
                 <View
                     style={{
                         justifyContent: 'space-between',

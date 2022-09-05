@@ -59,7 +59,6 @@ export const useUserPaginated = () => {
                 isLiked: false,
             }
         ))
-        // console.log('userPosts ', userPosts)
         saveStoreData(userPosts)
         setSimpleUserList(userPosts);
     }
