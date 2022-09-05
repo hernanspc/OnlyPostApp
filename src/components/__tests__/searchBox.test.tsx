@@ -3,11 +3,19 @@ import { View } from 'react-native'
 import { shallow } from 'enzyme';
 import SearchBox from '../searchBox';
 
-describe('TODO: TEST SearchBox', () => {
+describe('Testing SearchBox', () => {
     const wrapper = shallow(<SearchBox />);
 
-    test('should lenght', () => {
-        console.log('first', wrapper.find('View').length)
+    test('should View lenght', () => {
         expect(wrapper.find('View')).toHaveLength(1);
     });
+
+    test('should TextInput lenght', () => {
+        expect(wrapper.children().find('TextInput')).toHaveLength(1);
+    });
+
+    test('should Icon lenght', () => {
+        expect(wrapper.children().find('Icon')).toHaveLength(1);
+    });
+
 });
