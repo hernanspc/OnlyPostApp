@@ -27,11 +27,14 @@ const PostCard = ({ user }: Props) => {
                                     style={{ width: 40, height: 40, borderRadius: 100 }}
                                 />
                                 <View style={{ paddingLeft: 5 }}>
-                                    <Text style={{ fontSize: 15, fontWeight: 'bold' }}>
+                                    <Text style={{ fontSize: 14, fontWeight: 'bold', textDecorationLine: 'underline' }}>
+                                        User {user.id}
+                                    </Text>
+                                    <Text style={{ fontSize: 13, fontWeight: 'bold' }}>
                                         {user.name}
                                     </Text>
 
-                                    <Text style={{ fontSize: 13, color: "#B0B0B0" }}>13 weeks ago</Text>
+                                    <Text style={{ fontSize: 11, color: "#B0B0B0" }}>13 weeks ago</Text>
                                 </View>
                             </View>
                             <Feather name="more-vertical" style={{ fontSize: 20 }} />
@@ -43,8 +46,8 @@ const PostCard = ({ user }: Props) => {
                             <Text>{capitalizarPrimeraLetra(post.body)}</Text>
                         </View>
                         <View style={styles.postImageContainer}>
-                            <Image style={{ width: '95%', height: 200 }}
-                                source={{ uri: "https://picsum.photos/200" }}
+                            <Image resizeMode='cover' style={{ width: '100%', height: 250 }}
+                                source={{ uri: post.imagenPublicacion }}
                             />
                         </View>
 
@@ -122,8 +125,8 @@ const styles = StyleSheet.create({
         paddingVertical: 15,
     },
     userLoggedProfile: {
-        width: 34,
-        height: 34,
+        width: 30,
+        height: 30,
         borderRadius: 100,
         backgroundColor: 'orange',
         marginRight: 10,

@@ -9,6 +9,7 @@ import { SimpleUsers } from '../interfaces/userInterfaces';
 import Feather from "react-native-vector-icons/Feather";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import Stories from '../components/stories';
+import SearchBox from '../components/searchBox';
 
 const Home = () => {
 
@@ -36,18 +37,26 @@ const Home = () => {
 
     return (
         <SafeAreaView style={styles.container}>
-            <View style={{ backgroundColor: 'white', height: '100%' }}>
+            <View style={{
+                // backgroundColor: 'white', height: '100%'
+                width: '100%',
+                height: '100%',
+                backgroundColor: 'white',
+                position: 'relative',
+            }}>
                 <StatusBar
                     backgroundColor="white"
                     barStyle="dark-content"
                     animated={true}
                 />
+                {/* <StatusBar translucent backgroundColor="transparent" barStyle="light-content" /> */}
                 <View
                     style={{
                         justifyContent: 'space-between',
                         flexDirection: 'row',
                         paddingHorizontal: 15,
                         alignItems: 'center',
+                        // backgroundColor: '#000'
                     }}>
                     <FontAwesome name="plus-square-o" style={{ fontSize: 24 }} />
                     <Text
@@ -62,6 +71,9 @@ const Home = () => {
                 </View>
                 <ScrollView>
                     <Stories />
+                    <ScrollView showsVerticalScrollIndicator={false}>
+                        <SearchBox />
+                    </ScrollView>
                     <FlashList
                         data={data}
                         keyExtractor={({ id }) => id.toString()}
@@ -83,7 +95,6 @@ export default Home
 const styles = StyleSheet.create({
     container: {
         display: 'flex',
-        // flexDirection: 'column',
     },
     head: {
         display: 'flex',

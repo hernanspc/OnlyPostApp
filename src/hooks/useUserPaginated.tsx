@@ -13,11 +13,10 @@ export const useUserPaginated = () => {
     const getPostsOfUser = async (id: number) => {
         const resp = await userApi.get(`https://jsonplaceholder.typicode.com/users/${id}/posts`);
         const value = resp.data;
-
         const arrayPosts = value.map((e: any, index: number) => (
             {
                 ...e,
-                imagenPublicacion: "https://picsum.photos/200"
+                imagenPublicacion: `https://res.cloudinary.com/dd0myqhyb/image/upload/v1662351177/OnlyPost/post/post${e.id}.jpg`
             }
         ));
         return await arrayPosts;
@@ -40,7 +39,7 @@ export const useUserPaginated = () => {
             {
                 ...user,
                 picture: `https://res.cloudinary.com/dd0myqhyb/image/upload/v1662311578/OnlyPost/user${user.id}.jpg`,
-                loggedImageUser: `https://res.cloudinary.com/dd0myqhyb/image/upload/v1662308282/Mark_Zuckerberg_F8_2019_Keynote__32830578717___cropped_kgmnd1.jpg`,
+                loggedImageUser: `https://res.cloudinary.com/dd0myqhyb/image/upload/v1662308282/OnlyPost/user.jpg`,
                 publications: allRealPosts.filter(publications => publications.userId === user.id).slice(0, 3),
                 likes: 765,
                 isLiked: false,

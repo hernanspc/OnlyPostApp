@@ -14,10 +14,9 @@ import Home from './src/screens/home';
 const App = () => {
 
   return (
-    <SafeAreaProvider style={{ flex: 1 }}>
-      {/* <StatusBar translucent backgroundColor="transparent" barStyle="light-content" /> */}
-      <Home />
-    </SafeAreaProvider>
+    // <SafeAreaProvider style={{ flex: 1 }}>
+    <Home />
+    // </SafeAreaProvider>
   );
 };
 
