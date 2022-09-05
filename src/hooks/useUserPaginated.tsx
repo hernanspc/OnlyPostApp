@@ -34,7 +34,7 @@ export const useUserPaginated = () => {
             // ponlo en el nuevo array
             arrayCount.push(numbers[n]);
             // bórralo de numbers
-            numbers.splice(arrayCount[n], 1);
+            numbers.splice(parseInt(arrayCount[n]), 1);
         }
 
         const filtered = userList.filter(({ id }) => id <= 5);
@@ -72,8 +72,17 @@ export const useUserPaginated = () => {
         }
     }
 
+    const evaluate = async () => {
+        const jsonValue = await AsyncStorage.getItem('@usersWithPost')
+        if (!jsonValue) {
+            loadUsers();
+        } else {
+            return
+        }
+    }
+
     useEffect(() => {
-        loadUsers();
+        evaluate();
     }, [])
 
 

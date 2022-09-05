@@ -22,6 +22,7 @@ const Home = () => {
         SplashScreen.hide();
     }, [])
 
+
     const checkUserInStorage = async () => {
         try {
             const jsonValue = await AsyncStorage.getItem('@usersWithPost')
