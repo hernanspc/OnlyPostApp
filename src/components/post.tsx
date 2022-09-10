@@ -23,7 +23,6 @@ const PostCard = ({ user }: Props) => {
                 return (
                     <View key={index} style={styles.card}>
                         <HeaderPost name={user.name} picture={user.picture} />
-
                         <View style={{ marginHorizontal: 10 }}>
                             <Text style={{ fontWeight: 'bold' }} >{capitalizarPrimeraLetra(post.title)}</Text>
                         </View>
