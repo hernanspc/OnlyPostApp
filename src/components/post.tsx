@@ -15,7 +15,6 @@ const PostCard = ({ user }: Props) => {
 
     const postData = user?.publications;
 
-
     return (
         <View>
             <Text style={{
@@ -26,9 +25,7 @@ const PostCard = ({ user }: Props) => {
             </Text>
             {postData?.map((post, index) => {
                 const [like, setLike] = useState(user?.isLiked);
-                const submitFilter = () => {
 
-                }
                 return (
                     <View key={index} style={styles.card}>
                         <View style={styles.postHead}>
@@ -81,10 +78,11 @@ const PostCard = ({ user }: Props) => {
                             </View>
                             <Feather name="bookmark" style={{ fontSize: 20 }} />
                         </View>
+
                         <View style={{ paddingHorizontal: 15 }}>
                             <Text>
                                 {like ? 'Te' : 'Le'} gusta a {like ? 'ti y a' : ''}{' '}
-                                {user.likes ? like ? user.likes + 1 : user.likes : ""} personas
+                                {user.likes ? like ? user.likes + 1 : user.likes : null} personas
                             </Text>
                             <Text style={{ opacity: 0.4, paddingVertical: 2 }}>
                                 Ver todos los comentarios

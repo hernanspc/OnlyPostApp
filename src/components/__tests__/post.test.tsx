@@ -107,7 +107,7 @@ describe('Testing Component SearchBox', () => {
                 }
             ],
             "likes": 20,
-            "isLiked": true
+            "isLiked": false
         },
         {
             "id": 3,
@@ -263,13 +263,23 @@ describe('Testing Component SearchBox', () => {
 
     const wrapper = shallow(<PostCard user={dataMock[0]} />);
 
-    test('should Container SearchBox exist', () => {
+    test('should Container SearchBox exist is liked true', () => {
+        expect(wrapper.find('View')).toHaveLength(37);
+    });
+
+    test('should Container SearchBox exist is liked false', () => {
+        const wrapper = shallow(<PostCard user={dataMock[1]} />);
         expect(wrapper.find('View')).toHaveLength(37);
     });
 
     test('should Text render', () => {
         expect(wrapper.children().find('Text').at(0).props().children).toEqual(["User ", dataMock[0].id]);
         expect(wrapper.children().find('Text')).toHaveLength(19);
+    });
+
+    test('should have', () => {
+        // wrapper.find('TouchableOpacity').first().prop('onPress')();
+        console.log(wrapper.find('TouchableOpacity').first().props())
     });
 
 }); 
