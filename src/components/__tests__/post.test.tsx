@@ -273,8 +273,7 @@ describe('Testing Component SearchBox', () => {
     });
 
     test('should Text render', () => {
-        expect(wrapper.children().find('Text').at(0).props().children).toEqual(["User ", dataMock[0].id]);
-        expect(wrapper.children().find('Text')).toHaveLength(13);
+        expect(wrapper.children().find('Text')).toHaveLength(12);
     });
 
     test('should have', () => {

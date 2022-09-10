@@ -13,17 +13,10 @@ interface Props {
 }
 
 const PostCard = ({ user }: Props) => {
-
     const postData = user?.publications;
 
     return (
         <View>
-            <Text style={{
-                marginHorizontal: 10, fontSize: 15, fontWeight: 'bold', textDecorationLine: 'underline',
-                fontFamily: 'Lobster-Regular',
-            }}>
-                User {user.id}
-            </Text>
             {postData?.map((post, index) => {
                 const [like, setLike] = useState(user?.isLiked);
 

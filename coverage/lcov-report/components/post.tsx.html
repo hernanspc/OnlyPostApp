@@ -192,28 +192,8 @@
 <a name='L127'></a><a href='#L127'>127</a>
 <a name='L128'></a><a href='#L128'>128</a>
 <a name='L129'></a><a href='#L129'>129</a>
-<a name='L130'></a><a href='#L130'>130</a>
-<a name='L131'></a><a href='#L131'>131</a>
-<a name='L132'></a><a href='#L132'>132</a>
-<a name='L133'></a><a href='#L133'>133</a>
-<a name='L134'></a><a href='#L134'>134</a>
-<a name='L135'></a><a href='#L135'>135</a>
-<a name='L136'></a><a href='#L136'>136</a>
-<a name='L137'></a><a href='#L137'>137</a>
-<a name='L138'></a><a href='#L138'>138</a>
-<a name='L139'></a><a href='#L139'>139</a>
-<a name='L140'></a><a href='#L140'>140</a>
-<a name='L141'></a><a href='#L141'>141</a>
-<a name='L142'></a><a href='#L142'>142</a>
-<a name='L143'></a><a href='#L143'>143</a>
-<a name='L144'></a><a href='#L144'>144</a>
-<a name='L145'></a><a href='#L145'>145</a>
-<a name='L146'></a><a href='#L146'>146</a>
-<a name='L147'></a><a href='#L147'>147</a>
-<a name='L148'></a><a href='#L148'>148</a>
-<a name='L149'></a><a href='#L149'>149</a>
-<a name='L150'></a><a href='#L150'>150</a>
-<a name='L151'></a><a href='#L151'>151</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L130'></a><a href='#L130'>130</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -227,37 +207,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -363,6 +320,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useState } from 'react';
 import { View, Text, Image, TouchableOpacity, TextInput, StyleSheet } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
@@ -371,45 +329,23 @@ import Ionic from 'react-native-vector-icons/Ionicons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import { PostResponse, SimpleUsers } from '../interfaces/userInterfaces';
 import { capitalizarPrimeraLetra } from '../utils/functions';
+import HeaderPost from './headerPost';
 &nbsp;
 interface Props {
     user: SimpleUsers;
 }
 &nbsp;
 const PostCard = ({ user }: Props) =&gt; {
-&nbsp;
     const postData = user?.publications;
 &nbsp;
     return (
         &lt;View&gt;
-            &lt;Text style={{
-                marginHorizontal: 10, fontSize: 15, fontWeight: 'bold', textDecorationLine: 'underline',
-                fontFamily: 'Lobster-Regular',
-            }}&gt;
-                User {user.id}
-            &lt;/Text&gt;
             {postData?.map((post, index) =&gt; {
                 const [like, setLike] = useState(user?.isLiked);
 &nbsp;
                 return (
                     &lt;View key={index} style={styles.card}&gt;
-                        &lt;View style={styles.postHead}&gt;
-                            &lt;View style={{ flexDirection: 'row', alignItems: 'center' }}&gt;
-                                &lt;Image
-                                    source={{ uri: user.picture }}
-                                    style={{ width: 40, height: 40, borderRadius: 100 }}
-                                /&gt;
-                                &lt;View style={{ paddingLeft: 5 }}&gt;
-&nbsp;
-                                    &lt;Text style={{ fontSize: 13, fontWeight: 'bold' }}&gt;
-                                        {user.name}
-                                    &lt;/Text&gt;
-&nbsp;
-                                    &lt;Text style={{ fontSize: 11, color: "#B0B0B0" }}&gt;13 weeks ago&lt;/Text&gt;
-                                &lt;/View&gt;
-                            &lt;/View&gt;
-                            &lt;Feather name="more-vertical" style={{ fontSize: 20 }} /&gt;
-                        &lt;/View&gt;
+                        &lt;HeaderPost name={user.name} picture={user.picture} /&gt;
 &nbsp;
                         &lt;View style={{ marginHorizontal: 10 }}&gt;
                             &lt;Text style={{ fontWeight: 'bold' }} &gt;{capitalizarPrimeraLetra(post.title)}&lt;/Text&gt;
@@ -419,7 +355,7 @@ const PostCard = ({ user }: Props) =&gt; {
                         &lt;/View&gt;
 &nbsp;
                         &lt;View style={styles.postImageContainer}&gt;
-                            &lt;Image resizeMode='cover' style={{ width: '100%', height: 250 }}
+                            &lt;Image resizeMode='contain' style={{ width: '70%', height: 170 }}
                                 source={{ uri: post.imagenPublicacion }}
                             /&gt;
                         &lt;/View&gt;
@@ -490,6 +426,7 @@ const styles = StyleSheet.create({
         position: 'relative',
         justifyContent: 'center',
         alignItems: 'center',
+        backgroundColor: "#f0f3f4",
     },
     options: {
         flexDirection: 'row',
@@ -520,7 +457,7 @@ const styles = StyleSheet.create({
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-09-10T16:44:41.958Z
+                at 2022-09-10T17:14:13.113Z
             </div>
         <script src="../prettify.js"></script>
         <script>
