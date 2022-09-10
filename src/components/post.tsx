@@ -5,7 +5,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import Ionic from 'react-native-vector-icons/Ionicons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import { PostResponse, SimpleUsers } from '../interfaces/userInterfaces';
-import { capitalizarPrimeraLetra } from '../utils/functions/functions';
+import { capitalizarPrimeraLetra } from '../utils/functions';
 
 interface Props {
     user: SimpleUsers;
