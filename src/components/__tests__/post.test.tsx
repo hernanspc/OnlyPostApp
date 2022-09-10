@@ -1,6 +1,10 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import Enzyme, { mount, shallow } from 'enzyme';
 import PostCard from '../post';
+import { TouchableOpacity } from 'react-native';
+import Adapter from 'enzyme-adapter-react-16';
+
+Enzyme.configure({ adapter: new Adapter() });
 
 describe('Testing Component SearchBox', () => {
 
@@ -53,7 +57,7 @@ describe('Testing Component SearchBox', () => {
                 }
             ],
             "likes": 10,
-            "isLiked": false
+            "isLiked": true
         },
         {
             "id": 2,
@@ -103,7 +107,7 @@ describe('Testing Component SearchBox', () => {
                 }
             ],
             "likes": 20,
-            "isLiked": false
+            "isLiked": true
         },
         {
             "id": 3,
@@ -268,4 +272,4 @@ describe('Testing Component SearchBox', () => {
         expect(wrapper.children().find('Text')).toHaveLength(19);
     });
 
-});
+}); 

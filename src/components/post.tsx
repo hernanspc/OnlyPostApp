@@ -14,6 +14,8 @@ interface Props {
 const PostCard = ({ user }: Props) => {
 
     const postData = user?.publications;
+
+
     return (
         <View>
             <Text style={{
@@ -24,6 +26,9 @@ const PostCard = ({ user }: Props) => {
             </Text>
             {postData?.map((post, index) => {
                 const [like, setLike] = useState(user?.isLiked);
+                const submitFilter = () => {
+
+                }
                 return (
                     <View key={index} style={styles.card}>
                         <View style={styles.postHead}>
@@ -43,12 +48,14 @@ const PostCard = ({ user }: Props) => {
                             </View>
                             <Feather name="more-vertical" style={{ fontSize: 20 }} />
                         </View>
+
                         <View style={{ marginHorizontal: 10 }}>
                             <Text style={{ fontWeight: 'bold' }} >{capitalizarPrimeraLetra(post.title)}</Text>
                         </View>
                         <View style={styles.textBody}>
                             <Text>{capitalizarPrimeraLetra(post.body)}</Text>
                         </View>
+
                         <View style={styles.postImageContainer}>
                             <Image resizeMode='cover' style={{ width: '100%', height: 250 }}
                                 source={{ uri: post.imagenPublicacion }}
