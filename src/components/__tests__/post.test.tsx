@@ -276,9 +276,4 @@ describe('Testing Component SearchBox', () => {
         expect(wrapper.children().find('Text')).toHaveLength(12);
     });
 
-    test('should have', () => {
-        // wrapper.find('TouchableOpacity').first().prop('onPress')();
-        console.log(wrapper.find('TouchableOpacity').first().props())
-    });
-
 }); 
