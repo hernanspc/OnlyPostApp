@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { userApi } from '../api/userApi';
 import { UsersResponse, SimpleUsers, PostResponse } from '../interfaces/userInterfaces';
+import { removeDataAsyncStorage, saveDataAsyncStorage } from '../utils/storage';
 
 export const useUserPaginated = () => {
 
@@ -48,17 +49,9 @@ export const useUserPaginated = () => {
                 isLiked: false,
             }
         ))
-        saveStoreData(userPosts)
         setSimpleUserList(userPosts);
-    }
-
-    const saveStoreData = async (value: object) => {
-        try {
-            await AsyncStorage.removeItem('@usersWithPost');
-            await AsyncStorage.setItem('@usersWithPost', JSON.stringify(value))
-        } catch (e) {
-            return (e)
-        }
+        saveDataAsyncStorage("@usersWithPost", userPosts)
+        removeDataAsyncStorage("@usersWithPost")
     }
 
     const evaluate = async () => {
