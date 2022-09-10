@@ -6,6 +6,7 @@ import Ionic from 'react-native-vector-icons/Ionicons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import { PostResponse, SimpleUsers } from '../interfaces/userInterfaces';
 import { capitalizarPrimeraLetra } from '../utils/functions';
+import HeaderPost from './headerPost';
 
 interface Props {
     user: SimpleUsers;
@@ -28,23 +29,7 @@ const PostCard = ({ user }: Props) => {
 
                 return (
                     <View key={index} style={styles.card}>
-                        <View style={styles.postHead}>
-                            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                                <Image
-                                    source={{ uri: user.picture }}
-                                    style={{ width: 40, height: 40, borderRadius: 100 }}
-                                />
-                                <View style={{ paddingLeft: 5 }}>
-
-                                    <Text style={{ fontSize: 13, fontWeight: 'bold' }}>
-                                        {user.name}
-                                    </Text>
-
-                                    <Text style={{ fontSize: 11, color: "#B0B0B0" }}>13 weeks ago</Text>
-                                </View>
-                            </View>
-                            <Feather name="more-vertical" style={{ fontSize: 20 }} />
-                        </View>
+                        <HeaderPost name={user.name} picture={user.picture} />
 
                         <View style={{ marginHorizontal: 10 }}>
                             <Text style={{ fontWeight: 'bold' }} >{capitalizarPrimeraLetra(post.title)}</Text>
@@ -54,7 +39,7 @@ const PostCard = ({ user }: Props) => {
                         </View>
 
                         <View style={styles.postImageContainer}>
-                            <Image resizeMode='cover' style={{ width: '100%', height: 250 }}
+                            <Image resizeMode='contain' style={{ width: '70%', height: 170 }}
                                 source={{ uri: post.imagenPublicacion }}
                             />
                         </View>
@@ -125,6 +110,7 @@ const styles = StyleSheet.create({
         position: 'relative',
         justifyContent: 'center',
         alignItems: 'center',
+        backgroundColor: "#f0f3f4",
     },
     options: {
         flexDirection: 'row',
