@@ -50,8 +50,8 @@ export const useUserPaginated = () => {
             }
         ))
         setSimpleUserList(userPosts);
-        saveDataAsyncStorage("@usersWithPost", userPosts)
-        removeDataAsyncStorage("@usersWithPost")
+        await removeDataAsyncStorage("@usersWithPost")
+        await saveDataAsyncStorage("@usersWithPost", userPosts)
     }
 
     const evaluate = async () => {
