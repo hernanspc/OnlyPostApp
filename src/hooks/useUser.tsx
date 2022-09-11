@@ -21,7 +21,6 @@ export const useUserHook = () => {
     }
 
     const getUsersWithPosts = async () => {
-
         const storage = await getDataAsyncStorage('@data')
         if (storage) {
             setSimpleUser(storage);

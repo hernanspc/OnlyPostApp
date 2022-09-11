@@ -4,12 +4,10 @@ export async function getDataAsyncStorage<T = any>(key: string) {
     try {
         const data = await AsyncStorage.getItem(key);
         return JSON.parse(data!);
-    } catch (error) {
-        console.log('error ', error)
-    }
+    } catch (error) { }
 }
 
-export async function saveDataAsyncStorage(key: string, value: object) {
+export async function saveDataAsyncStorage(key: string, value: string | object) {
     try {
         await AsyncStorage.setItem(key, JSON.stringify(value));
     } catch (error) { }
