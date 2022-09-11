@@ -31,7 +31,7 @@ export interface Company {
 }
 
 export interface SimpleUsers {
-    id: number;
+    id: string;
     name: string;
     username: string;
     picture?: string;

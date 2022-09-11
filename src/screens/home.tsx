@@ -13,10 +13,8 @@ const Home = () => {
     const { simpleUser, getUsersWithPosts } = useUserHook();
 
     const onRefresh = async () => {
-        setRefreshing(true);
         await removeDataAsyncStorage('@data');
         getUsersWithPosts();
-        setRefreshing(false);
     }
 
     return (
@@ -32,7 +30,7 @@ const Home = () => {
                             key={data.index}
                             user={data.item} />
                     ))}
-                    keyExtractor={({ id }) => id.toString()}
+                    keyExtractor={item => item.id}
                     showsVerticalScrollIndicator={false}
                     refreshing={refreshing}
                     onRefresh={onRefresh}

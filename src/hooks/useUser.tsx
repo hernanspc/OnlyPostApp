@@ -11,6 +11,7 @@ export const useUserHook = () => {
         const storage = await getDataAsyncStorage('@data')
         if (storage) {
             setSimpleUser(storage);
+            console.log('goodbye')
             return;
         }
 
@@ -39,6 +40,7 @@ export const useUserHook = () => {
                 isLiked: false,
             }
         ))
+        console.log('done')
         saveDataAsyncStorage('@data', userPosts)
         setSimpleUser(userPosts);
     }
