@@ -3,8 +3,7 @@ import { View, Text, Image, TouchableOpacity, TextInput, StyleSheet } from 'reac
 import Feather from 'react-native-vector-icons/Feather';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Ionic from 'react-native-vector-icons/Ionicons';
-import Entypo from 'react-native-vector-icons/Entypo';
-import { PostResponse, SimpleUsers } from '../interfaces/userInterfaces';
+import { SimpleUsers } from '../interfaces/userInterfaces';
 import { capitalizarPrimeraLetra } from '../utils/functions';
 import HeaderPost from './headerPost';
 
@@ -15,8 +14,7 @@ interface Props {
 const PostCard = ({ user }: Props) => {
     const postData = user?.publications;
     return (
-        <View>
-            {/* <Text>{user.id}</Text> */}
+        <>
             {postData?.map((post, index) => {
                 const [like, setLike] = useState(user?.isLiked);
 
@@ -80,7 +78,7 @@ const PostCard = ({ user }: Props) => {
                     </View>
                 );
             })}
-        </View>
+        </>
     )
 }
 
