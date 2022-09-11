@@ -1,6 +1,6 @@
 import { responseUserWithPostMock } from '../../utils/const';
 import axios, { AxiosResponse, AxiosStatic } from 'axios';
-import { getUsers } from '../useUser';
+// import { getUsers } from '../useUser';
 import { UsersResponse } from '../../interfaces/userInterfaces';
 
 // jest.mock('axios');

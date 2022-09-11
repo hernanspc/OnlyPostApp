@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">18.18% </span>
+                <span class="strong">19.23% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>6/33</span>
+                <span class='fraction'>5/26</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">10% </span>
+                <span class="strong">12.5% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/10</span>
+                <span class='fraction'>1/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">18.75% </span>
+                <span class="strong">20% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>6/32</span>
+                <span class='fraction'>5/25</span>
             </div>
         
             
@@ -126,12 +126,7 @@
 <a name='L61'></a><a href='#L61'>61</a>
 <a name='L62'></a><a href='#L62'>62</a>
 <a name='L63'></a><a href='#L63'>63</a>
-<a name='L64'></a><a href='#L64'>64</a>
-<a name='L65'></a><a href='#L65'>65</a>
-<a name='L66'></a><a href='#L66'>66</a>
-<a name='L67'></a><a href='#L67'>67</a>
-<a name='L68'></a><a href='#L68'>68</a>
-<a name='L69'></a><a href='#L69'>69</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L64'></a><a href='#L64'>64</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -142,13 +137,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -162,7 +153,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -203,21 +193,17 @@
 import { userApi } from '../api/userApi';
 import { UsersResponse, SimpleUsers, PostResponse } from '../interfaces/userInterfaces';
 import { getDataAsyncStorage, removeDataAsyncStorage, saveDataAsyncStorage } from '../utils/storage';
-import { fetchUsers } from './utils';
+import { fetchUsers, getPostsOfUser } from './utils';
 &nbsp;
-// export const getUsers = async () =&gt; {
-//     const resp = await userApi.get('https://jsonplaceholder.typicode.com/users')
-//     return await resp.data
+// export const getPostsOfUser = async (id: string) =&gt; {
+//     const resp = await userApi.get('https://jsonplaceholder.typicode.com/users/' + id + '/posts')
+//     const value = resp.data;
+//     const arrayPosts = value.map((e: any) =&gt; (
+//         { ...e, imagenPublicacion: `https://res.cloudinary.com/dd0myqhyb/image/upload/v1662351177/OnlyPost/post/post${e.id}.jpg` }
+//     ));
+//     console.log(id, 'arrayPosts', arrayPosts);
+//     return await arrayPosts;
 // }
-&nbsp;
-export const getPostsOfUser = <span class="fstat-no" title="function not covered" >as</span>ync (id: string) =&gt; {
-    const resp = <span class="cstat-no" title="statement not covered" >await userApi.get('https://jsonplaceholder.typicode.com/users/' + id + '/posts')</span>
-    const value = <span class="cstat-no" title="statement not covered" >resp.data;</span>
-    const arrayPosts = <span class="cstat-no" title="statement not covered" >value.map(<span class="fstat-no" title="function not covered" >(e</span>: any) =&gt; (</span>
-<span class="cstat-no" title="statement not covered" >        { ...e, imagenPublicacion: `https://res.cloudinary.com/dd0myqhyb/image/upload/v1662351177/OnlyPost/post/post${e.id}.jpg` }</span>
-    ));
-<span class="cstat-no" title="statement not covered" >    return await arrayPosts;</span>
-}
 &nbsp;
 export const useUserHook = () =&gt; {
     const [simpleUser, setSimpleUser] = useState&lt;SimpleUsers[]&gt;([]);
@@ -231,7 +217,6 @@ export const useUserHook = () =&gt; {
         }
 &nbsp;
         const { data } = <span class="cstat-no" title="statement not covered" >await fetchUsers()</span>
-<span class="cstat-no" title="statement not covered" >        console.log('users ', data)</span>
         const filtered = <span class="cstat-no" title="statement not covered" >data.filter(<span class="fstat-no" title="function not covered" >(u</span>ser: UsersResponse) =&gt; <span class="cstat-no" title="statement not covered" >user.id &lt;= 5)</span>;</span>
         const usersPostsPromises = <span class="cstat-no" title="statement not covered" >filtered.map(<span class="fstat-no" title="function not covered" >(u</span>ser: { id: string; }) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >            return getPostsOfUser(user.id)</span>
@@ -274,7 +259,7 @@ export const useUserHook = () =&gt; {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-09-11T20:14:34.542Z
+                at 2022-09-11T20:31:06.510Z
             </div>
         <script src="../prettify.js"></script>
         <script>

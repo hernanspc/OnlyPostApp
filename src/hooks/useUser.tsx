@@ -2,21 +2,17 @@ import { useEffect, useRef, useState } from 'react';
 import { userApi } from '../api/userApi';
 import { UsersResponse, SimpleUsers, PostResponse } from '../interfaces/userInterfaces';
 import { getDataAsyncStorage, removeDataAsyncStorage, saveDataAsyncStorage } from '../utils/storage';
-import { fetchUsers } from './utils';
+import { fetchUsers, getPostsOfUser } from './utils';
 
-// export const getUsers = async () => {
-//     const resp = await userApi.get('https://jsonplaceholder.typicode.com/users')
-//     return await resp.data
+// export const getPostsOfUser = async (id: string) => {
+//     const resp = await userApi.get('https://jsonplaceholder.typicode.com/users/' + id + '/posts')
+//     const value = resp.data;
+//     const arrayPosts = value.map((e: any) => (
+//         { ...e, imagenPublicacion: `https://res.cloudinary.com/dd0myqhyb/image/upload/v1662351177/OnlyPost/post/post${e.id}.jpg` }
+//     ));
+//     console.log(id, 'arrayPosts', arrayPosts);
+//     return await arrayPosts;
 // }
-
-export const getPostsOfUser = async (id: string) => {
-    const resp = await userApi.get('https://jsonplaceholder.typicode.com/users/' + id + '/posts')
-    const value = resp.data;
-    const arrayPosts = value.map((e: any) => (
-        { ...e, imagenPublicacion: `https://res.cloudinary.com/dd0myqhyb/image/upload/v1662351177/OnlyPost/post/post${e.id}.jpg` }
-    ));
-    return await arrayPosts;
-}
 
 export const useUserHook = () => {
     const [simpleUser, setSimpleUser] = useState<SimpleUsers[]>([]);
@@ -30,7 +26,6 @@ export const useUserHook = () => {
         }
 
         const { data } = await fetchUsers()
-        console.log('users ', data)
         const filtered = data.filter((user: UsersResponse) => user.id <= 5);
         const usersPostsPromises = filtered.map((user: { id: string; }) => {
             return getPostsOfUser(user.id)
