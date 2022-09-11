@@ -12,17 +12,12 @@ const HeaderPost = ({ picture, name }: Props) => {
     return (
         <View style={styles.postHead}>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                <Image
+                <Image style={{ width: 40, height: 40, borderRadius: 100 }}
                     source={{ uri: picture }}
-                    style={{ width: 40, height: 40, borderRadius: 100 }}
                 />
                 <View style={{ paddingLeft: 5 }}>
-
-                    <Text style={{ fontSize: 13, fontWeight: 'bold' }}>
-                        {name}
-                    </Text>
-
-                    <Text style={{ fontSize: 11, color: "#B0B0B0" }}>13 weeks ago</Text>
+                    <Text style={styles.nameText}> {name}  </Text>
+                    <Text style={styles.timeText}>13 weeks ago</Text>
                 </View>
             </View>
             <Feather name="more-vertical" style={{ fontSize: 20 }} />
@@ -39,4 +34,12 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         padding: 15,
     },
+    nameText: {
+        fontSize: 13,
+        fontWeight: 'bold'
+    },
+    timeText: {
+        fontSize: 11,
+        color: "#B0B0B0"
+    }
 })
