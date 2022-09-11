@@ -2,11 +2,12 @@ import { useEffect, useRef, useState } from 'react';
 import { userApi } from '../api/userApi';
 import { UsersResponse, SimpleUsers, PostResponse } from '../interfaces/userInterfaces';
 import { getDataAsyncStorage, removeDataAsyncStorage, saveDataAsyncStorage } from '../utils/storage';
+import { fetchUsers } from './utils';
 
-export const getUsers = async () => {
-    const resp = await userApi.get('https://jsonplaceholder.typicode.com/users')
-    return await resp.data
-}
+// export const getUsers = async () => {
+//     const resp = await userApi.get('https://jsonplaceholder.typicode.com/users')
+//     return await resp.data
+// }
 
 export const getPostsOfUser = async (id: string) => {
     const resp = await userApi.get('https://jsonplaceholder.typicode.com/users/' + id + '/posts')
@@ -28,15 +29,16 @@ export const useUserHook = () => {
             return;
         }
 
-        const users = await getUsers()
-        const filtered = users.filter((user: UsersResponse) => user.id <= 5);
+        const { data } = await fetchUsers()
+        console.log('users ', data)
+        const filtered = data.filter((user: UsersResponse) => user.id <= 5);
         const usersPostsPromises = filtered.map((user: { id: string; }) => {
             return getPostsOfUser(user.id)
         })
 
         let allRealPosts: PostResponse[] = []
         const allPosts = await Promise.all(usersPostsPromises)
-        allPosts.map(post => {
+        allPosts.map((post) => {
             allRealPosts.push(...post)
         })
         const userPosts = filtered.map((user: UsersResponse, index: number) => (

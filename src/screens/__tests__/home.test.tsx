@@ -26,10 +26,7 @@ describe('Testing Component Home', () => {
         expect(wrapper.children().find('FlashList')).toHaveLength(1);
     });
 
-    // test('Read async-storage', async () => {
-    //     await saveDataAsyncStorage('@data', responseUserWithPostMock);
-    //     const data = await getDataAsyncStorage('@data');
-    //     console.log('data ', data)
-    //     expect(data).toEqual(responseUserWithPostMock);
-    // });
+    test('Read async-storage', async () => {
+
+    });
 });
