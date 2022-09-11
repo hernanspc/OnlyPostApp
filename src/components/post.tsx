@@ -14,9 +14,9 @@ interface Props {
 
 const PostCard = ({ user }: Props) => {
     const postData = user?.publications;
-
     return (
         <View>
+            {/* <Text>{user.id}</Text> */}
             {postData?.map((post, index) => {
                 const [like, setLike] = useState(user?.isLiked);
 

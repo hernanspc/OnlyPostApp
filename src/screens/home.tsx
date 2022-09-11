@@ -1,45 +1,28 @@
 import React, { useEffect, useState } from 'react'
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { FlashList } from '@shopify/flash-list';
 import { Image, StyleSheet, Text, View, SafeAreaView, ScrollView, Button, StatusBar, TouchableOpacity } from 'react-native'
 import SplashScreen from 'react-native-splash-screen'
 import PostCard from '../components/post';
-import { useUserPaginated } from '../hooks/useUserPaginated';
+import { useUserHook } from '../hooks/useUser';
 import { SimpleUsers } from '../interfaces/userInterfaces';
 import Feather from "react-native-vector-icons/Feather";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import SearchBox from '../components/searchBox';
+import { removeDataAsyncStorage } from '../utils/storage';
 
 const Home = () => {
 
-    const { simpleUserList, loadUsers } = useUserPaginated();
     const [refreshing, setRefreshing] = useState<boolean>(false);
-    const [data, setData] = useState<SimpleUsers[]>([])
+    const { simpleUser, isLoading, getUsersWithPosts } = useUserHook();
+
 
     useEffect(() => {
-        checkUserInStorage();
         SplashScreen.hide();
     }, [])
 
-    const checkUserInStorage = async () => {
-        try {
-            const jsonValue = await AsyncStorage.getItem('@usersWithPost')
-            if (!jsonValue) {
-                return;
-            } else {
-                console.log('JSON.parse(jsonValue) ', (jsonValue))
-                setData(JSON.parse(jsonValue))
-            }
-        } catch (e) {
-            return e
-        }
-    };
-
     const onRefresh = async () => {
-        setRefreshing(true);
-        await checkUserInStorage();
-        await loadUsers();
-        setRefreshing(false);
+        await removeDataAsyncStorage('@data');
+        getUsersWithPosts();
     }
 
     return (
@@ -74,26 +57,22 @@ const Home = () => {
                     <Feather name="navigation" style={{ fontSize: 24 }} />
                 </View>
                 <SearchBox />
-                {data.length > 0 ?
-                    <FlashList
-                        data={data}
-                        renderItem={(data => (
-                            <PostCard
-                                key={data.index}
-                                user={data.item} />
-                        ))}
-                        keyExtractor={({ id }) => id.toString()}
-                        showsVerticalScrollIndicator={false}
-                        refreshing={refreshing}
-                        onRefresh={onRefresh}
-                    />
-                    :
-                    <View>
-                        <TouchableOpacity
-                            onPress={onRefresh}
-                            style={{
-                                width: '100%',
-                            }}>
+
+                <FlashList
+                    data={simpleUser}
+                    renderItem={(data => (
+                        <PostCard
+                            key={data.index}
+                            user={data.item} />
+                    ))}
+                    keyExtractor={({ id }) => id.toString()}
+                    showsVerticalScrollIndicator={false}
+                    refreshing={refreshing}
+                    onRefresh={onRefresh}
+                    ListEmptyComponent={
+                        <View>
+                            <Text style={{ marginVertical: 10, fontFamily: 'Lobster-Regular', alignItems: 'center', textAlign: 'center' }}>Sin Publicaciones</Text>
+
                             <View
                                 style={{
                                     width: '100%',
@@ -114,10 +93,9 @@ const Home = () => {
                                     Cargar Publicaciones
                                 </Text>
                             </View>
-                        </TouchableOpacity>
-                    </View>
-                }
-
+                        </View>
+                    }
+                />
             </View>
         </SafeAreaView>
     )
