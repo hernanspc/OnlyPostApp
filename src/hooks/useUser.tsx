@@ -4,8 +4,6 @@ import { UsersResponse, SimpleUsers, PostResponse } from '../interfaces/userInte
 import { getDataAsyncStorage, removeDataAsyncStorage, saveDataAsyncStorage } from '../utils/storage';
 
 export const useUserHook = () => {
-
-    const [isLoading, setIsLoading] = useState(true);
     const [simpleUser, setSimpleUser] = useState<SimpleUsers[]>([]);
 
     const getUsers = async () => {
@@ -23,6 +21,7 @@ export const useUserHook = () => {
     }
 
     const getUsersWithPosts = async () => {
+
         const storage = await getDataAsyncStorage('@data')
         if (storage) {
             setSimpleUser(storage);
@@ -53,7 +52,6 @@ export const useUserHook = () => {
 
         saveDataAsyncStorage('@data', userPosts)
         setSimpleUser(userPosts);
-        setIsLoading(false);
     }
 
     useEffect(() => {
@@ -61,7 +59,6 @@ export const useUserHook = () => {
     }, [])
 
     return {
-        isLoading,
         simpleUser,
         getUsersWithPosts,
     }

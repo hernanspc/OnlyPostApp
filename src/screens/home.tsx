@@ -11,18 +11,18 @@ import SearchBox from '../components/searchBox';
 import { removeDataAsyncStorage } from '../utils/storage';
 
 const Home = () => {
-
     const [refreshing, setRefreshing] = useState<boolean>(false);
-    const { simpleUser, isLoading, getUsersWithPosts } = useUserHook();
-
+    const { simpleUser, getUsersWithPosts } = useUserHook();
 
     useEffect(() => {
         SplashScreen.hide();
     }, [])
 
     const onRefresh = async () => {
+        setRefreshing(true);
         await removeDataAsyncStorage('@data');
         getUsersWithPosts();
+        setRefreshing(false);
     }
 
     return (
