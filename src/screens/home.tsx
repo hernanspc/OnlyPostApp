@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { FlashList } from '@shopify/flash-list';
 import { StyleSheet, View, SafeAreaView, StatusBar } from 'react-native'
-import SplashScreen from 'react-native-splash-screen'
 import { useUserHook } from '../hooks/useUser';
 import { removeDataAsyncStorage } from '../utils/storage';
 import PostCard from '../components/post';
@@ -12,10 +11,6 @@ import Title from '../components/title';
 const Home = () => {
     const [refreshing, setRefreshing] = useState<boolean>(false);
     const { simpleUser, getUsersWithPosts } = useUserHook();
-
-    useEffect(() => {
-        SplashScreen.hide();
-    }, [])
 
     const onRefresh = async () => {
         setRefreshing(true);

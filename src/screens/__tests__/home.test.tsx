@@ -2,6 +2,8 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import Home from '../home';
 import PostCard from '../../components/post';
+import { getDataAsyncStorage, saveDataAsyncStorage } from '../../utils/storage';
+import { responseUserWithPostMock } from '../../utils/const';
 
 describe('Testing Component Home', () => {
     jest.mock('react-native-splash-screen', () => {
@@ -24,4 +26,10 @@ describe('Testing Component Home', () => {
         expect(wrapper.children().find('FlashList')).toHaveLength(1);
     });
 
+    // test('Read async-storage', async () => {
+    //     await saveDataAsyncStorage('@data', responseUserWithPostMock);
+    //     const data = await getDataAsyncStorage('@data');
+    //     console.log('data ', data)
+    //     expect(data).toEqual(responseUserWithPostMock);
+    // });
 });
