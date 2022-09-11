@@ -20,14 +20,14 @@ export const useUserHook = () => {
     const getUsersWithPosts = async () => {
         const storage = await getDataAsyncStorage('@data')
         if (storage) {
-            console.log('storage')
             setSimpleUser(storage);
             return;
         }
 
-        const { data } = await fetchUsers()
-        const filtered = data.filter((user: UsersResponse) => user.id <= 5);
+        const { data: result } = await fetchUsers()
+        const filtered = result.filter((user: UsersResponse) => user.id <= 5);
         const usersPostsPromises = filtered.map((user: { id: string; }) => {
+            // const 
             return getPostsOfUser(user.id)
         })
 
@@ -46,7 +46,6 @@ export const useUserHook = () => {
                 isLiked: false,
             }
         ))
-        console.log('fresh')
         saveDataAsyncStorage('@data', userPosts)
         setSimpleUser(userPosts);
     }

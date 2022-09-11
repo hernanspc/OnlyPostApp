@@ -1,6 +1,6 @@
 import axios, { AxiosStatic } from "axios";
-import { responseUserWithPostMock } from "../../utils/const";
-import { BASE_URL, fetchUsers } from "../utils";
+import { responseUserWithPostMock, resPostUser5 } from "../../utils/const";
+import { BASE_URL, fetchUsers, getPostsOfUser } from "../utils";
 
 jest.mock("axios");
 // ok
@@ -19,6 +19,23 @@ describe("fetchUsers", () => {
             // then
             expect(axios.get).toHaveBeenCalledWith(`${BASE_URL}`);
             expect(result).toEqual(responseUserWithPostMock);
+        });
+    });
+
+});
+
+describe("fetchUsers", () => {
+    describe("when API call is successful", () => {
+        it("should return users list", async () => {
+            // given
+            axios.get.mockResolvedValueOnce(resPostUser5);
+
+            // when
+            const result = await getPostsOfUser((5).toString());
+
+            // then
+            expect(axios.get).toHaveBeenCalledWith(`https://jsonplaceholder.typicode.com/users/5/posts`);
+            expect(result).toEqual(resPostUser5);
         });
     });
 

@@ -252,3 +252,39 @@ export const responseUserWithPostMock = [
         "isLiked": false
     }
 ]
+
+export const resPostUser5 = [{
+    "body": "molestias id nostrum/nexcepturi molestiae dolore omnis repellendus quaerat saepe/nconsectetur iste quaerat tenetur asperiores accusamus ex ut/nnam quidem est ducimus sunt debitis saepe",
+    "id": 41,
+    "imagenPublicacion": "https://res.cloudinary.com/dd0myqhyb/image/upload/v1662351177/OnlyPost/post/post41.jpg",
+    "title": "non est facere",
+    "userId": 5
+}, {
+    "body": "odio fugit voluptatum ducimus earum autem est incidunt voluptatem/nodit reiciendis aliquam sunt sequi nulla dolorem/nnon facere repellendus voluptates quia/nratione harum vitae ut",
+    "id": 42,
+    "imagenPublicacion": "https://res.cloudinary.com/dd0myqhyb/image/upload/v1662351177/OnlyPost/post/post42.jpg",
+    "title": "commodi ullam sint et excepturi error explicabo praesentium voluptas",
+    "userId": 5
+}, {
+    "body": "similique fugit est/nillum et dolorum harum et voluptate eaque quidem/nexercitationem quos nam commodi possimus cum odio nihil nulla/ndolorum exercitationem magnam ex et a et distinctio debitis",
+    "id": 43,
+    "imagenPublicacion": "https://res.cloudinary.com/dd0myqhyb/image/upload/v1662351177/OnlyPost/post/post43.jpg",
+    "title": "eligendi iste nostrum consequuntur adipisci praesentium sit beatae perferendis",
+    "userId": 5
+}, {
+    "body": "temporibus est consectetur dolore/net libero debitis vel velit laboriosam quia/nipsum quibusdam qui itaque fuga rem aut/nea et iure quam sed maxime ut distinctio quae",
+    "id": 44,
+    "imagenPublicacion": "https://res.cloudinary.com/dd0myqhyb/image/upload/v1662351177/OnlyPost/post/post44.jpg", "title": "optio dolor molestias sit", "userId": 5
+}, {
+    "body": "est natus reiciendis nihil possimus aut provident/nex et dolor/nrepellat pariatur est/nnobis rerum repellendus dolorem autem", "id": 45, "imagenPublicacion": "https://res.cloudinary.com/dd0myqhyb/image/upload/v1662351177/OnlyPost/post/post45.jpg", "title": "ut numquam possimus omnis eius suscipit laudantium iure", "userId": 5
+}, {
+    "body": "voluptatem quisquam iste/nvoluptatibus natus officiis facilis dolorem/nquis quas ipsam/nvel et voluptatum in aliquid", "id": 46, "imagenPublicacion": "https://res.cloudinary.com/dd0myqhyb/image/upload/v1662351177/OnlyPost/post/post46.jpg", "title": "aut quo modi neque nostrum ducimus", "userId": 5
+}, {
+    "body": "voluptatem assumenda ut qui ut cupiditate aut impedit veniam/noccaecati nemo illum voluptatem laudantium/nmolestiae beatae rerum ea iure soluta nostrum/neligendi et voluptate", "id": 47, "imagenPublicacion": "https://res.cloudinary.com/dd0myqhyb/image/upload/v1662351177/OnlyPost/post/post47.jpg", "title": "quibusdam cumque rem aut deserunt", "userId": 5
+}, {
+    "body": "voluptates quo voluptatem facilis iure occaecati/nvel assumenda rerum officia et/nillum perspiciatis ab deleniti/nlaudantium repellat ad ut et autem reprehenderit", "id": 48, "imagenPublicacion": "https://res.cloudinary.com/dd0myqhyb/image/upload/v1662351177/OnlyPost/post/post48.jpg", "title": "ut voluptatem illum ea doloribus itaque eos", "userId": 5
+}, {
+    "body": "inventore ab sint/nnatus fugit id nulla sequi architecto nihil quaerat/neos tenetur in in eum veritatis non/nquibusdam officiis aspernatur cumque aut commodi aut", "id": 49, "imagenPublicacion": "https://res.cloudinary.com/dd0myqhyb/image/upload/v1662351177/OnlyPost/post/post49.jpg", "title": "laborum non sunt aut ut assumenda perspiciatis voluptas", "userId": 5
+}, {
+    "body": "error suscipit maxime adipisci consequuntur recusandae/nvoluptas eligendi et est et voluptates/nquia distinctio ab amet quaerat molestiae et vitae/nadipisci impedit sequi nesciunt quis consectetur", "id": 50, "imagenPublicacion": "https://res.cloudinary.com/dd0myqhyb/image/upload/v1662351177/OnlyPost/post/post50.jpg", "title": "repellendus qui recusandae incidunt voluptates tenetur qui omnis exercitationem", "userId": 5
+}]
