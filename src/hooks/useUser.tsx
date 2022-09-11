@@ -4,16 +4,6 @@ import { UsersResponse, SimpleUsers, PostResponse } from '../interfaces/userInte
 import { getDataAsyncStorage, removeDataAsyncStorage, saveDataAsyncStorage } from '../utils/storage';
 import { fetchUsers, getPostsOfUser } from './utils';
 
-// export const getPostsOfUser = async (id: string) => {
-//     const resp = await userApi.get('https://jsonplaceholder.typicode.com/users/' + id + '/posts')
-//     const value = resp.data;
-//     const arrayPosts = value.map((e: any) => (
-//         { ...e, imagenPublicacion: `https://res.cloudinary.com/dd0myqhyb/image/upload/v1662351177/OnlyPost/post/post${e.id}.jpg` }
-//     ));
-//     console.log(id, 'arrayPosts', arrayPosts);
-//     return await arrayPosts;
-// }
-
 export const useUserHook = () => {
     const [simpleUser, setSimpleUser] = useState<SimpleUsers[]>([]);
 

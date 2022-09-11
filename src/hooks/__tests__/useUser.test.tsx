@@ -1,7 +1,12 @@
 import { responseUserWithPostMock } from '../../utils/const';
 import axios, { AxiosResponse, AxiosStatic } from 'axios';
-// import { getUsers } from '../useUser';
+import { useUserHook } from '../useUser';
 import { UsersResponse } from '../../interfaces/userInterfaces';
+
+interface AxiosMock extends AxiosStatic {
+    mockResolvedValue: Function
+    mockRejectedValue: Function
+}
 
 // jest.mock('axios');
 // const mockedAxios = axios as jest.Mocked<typeof axios>;
@@ -10,7 +15,6 @@ import { UsersResponse } from '../../interfaces/userInterfaces';
 //     mockedAxios.get.mockImplementation(() => Promise.resolve(responseUserWithPostMock));
 //     mockedAxios.post.mockImplementation(() => Promise.resolve(responseUserWithPostMock));
 // });
-
 
 // describe('Axios instance standart test', () => {
 
@@ -26,10 +30,9 @@ import { UsersResponse } from '../../interfaces/userInterfaces';
 // });
 
 
-interface AxiosMock extends AxiosStatic {
-    mockResolvedValue: Function
-    mockRejectedValue: Function
-}
+it("useUserHook instance standart test", async () => {
+    expect(typeof useUserHook).toBe('function');
+});
 
 // jest.mock('axios')
 // const mockAxios = axios as AxiosMock
@@ -45,15 +48,3 @@ interface AxiosMock extends AxiosStatic {
 
 
 
-// jest.mock('axios')
-// const mockAxios = axios as AxiosMock
-
-// it('make api call to get data', async () => {
-
-//     beforeEach(() => {
-//         mockAxios.mockResolvedValue(() => Promise.resolve(responseUserWithPostMock))
-//     });
-
-//     // const result = await getUsers();
-//     // expect(result).toBe(responseUserWithPostMock);
-// })
