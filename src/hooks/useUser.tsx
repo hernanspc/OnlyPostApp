@@ -30,8 +30,8 @@ export const useUserHook = () => {
 
         const users = await getUsers()
         const filtered = users.filter((user: UsersResponse) => user.id <= 5);
-        const usersPostsPromises = filtered.map((u: { id: string; }) => {
-            return getPostsOfUser(u.id)
+        const usersPostsPromises = filtered.map((user: { id: string; }) => {
+            return getPostsOfUser(user.id)
         })
 
         let allRealPosts: PostResponse[] = []
@@ -49,7 +49,6 @@ export const useUserHook = () => {
                 isLiked: false,
             }
         ))
-
         saveDataAsyncStorage('@data', userPosts)
         setSimpleUser(userPosts);
     }
