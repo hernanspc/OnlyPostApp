@@ -264,12 +264,12 @@ describe('Testing Component SearchBox', () => {
     const wrapper = shallow(<PostCard user={dataMock[0]} />);
 
     test('should Container SearchBox exist is liked true', () => {
-        expect(wrapper.find('View')).toHaveLength(28);
+        expect(wrapper.find('View')).toHaveLength(27);
     });
 
     test('should Container SearchBox exist is liked false', () => {
         const wrapper = shallow(<PostCard user={dataMock[1]} />);
-        expect(wrapper.find('View')).toHaveLength(28);
+        expect(wrapper.find('View')).toHaveLength(27);
     });
 
     test('should Text render', () => {
