@@ -9,6 +9,7 @@ import Feather from "react-native-vector-icons/Feather";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import SearchBox from '../components/searchBox';
 import { removeDataAsyncStorage } from '../utils/storage';
+import ItemSkeleton from '../components/itemSkeleton';
 
 const Home = () => {
     const [refreshing, setRefreshing] = useState<boolean>(false);
@@ -69,32 +70,7 @@ const Home = () => {
                     showsVerticalScrollIndicator={false}
                     refreshing={refreshing}
                     onRefresh={onRefresh}
-                    ListEmptyComponent={
-                        <View>
-                            <Text style={{ marginVertical: 10, fontFamily: 'Lobster-Regular', alignItems: 'center', textAlign: 'center' }}>Sin Publicaciones</Text>
-
-                            <View
-                                style={{
-                                    width: '100%',
-                                    height: 35,
-                                    borderRadius: 5,
-                                    borderColor: '#DEDEDE',
-                                    borderWidth: 1,
-                                    justifyContent: 'center',
-                                    alignItems: 'center',
-                                }}>
-                                <Text
-                                    style={{
-                                        fontWeight: 'bold',
-                                        fontSize: 14,
-                                        letterSpacing: 1,
-                                        opacity: 0.8,
-                                    }}>
-                                    Cargar Publicaciones
-                                </Text>
-                            </View>
-                        </View>
-                    }
+                    ListEmptyComponent={<ItemSkeleton />}
                 />
             </View>
         </SafeAreaView>
