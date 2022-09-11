@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { FlashList } from '@shopify/flash-list';
-import { Image, StyleSheet, Text, View, SafeAreaView, ScrollView, Button, StatusBar, TouchableOpacity } from 'react-native'
+import { StyleSheet, View, SafeAreaView, StatusBar } from 'react-native'
 import SplashScreen from 'react-native-splash-screen'
-import PostCard from '../components/post';
 import { useUserHook } from '../hooks/useUser';
-import { SimpleUsers } from '../interfaces/userInterfaces';
-import Feather from "react-native-vector-icons/Feather";
-import FontAwesome from "react-native-vector-icons/FontAwesome";
-import SearchBox from '../components/searchBox';
 import { removeDataAsyncStorage } from '../utils/storage';
+import PostCard from '../components/post';
+import SearchBox from '../components/searchBox';
 import ItemSkeleton from '../components/itemSkeleton';
+import Title from '../components/title';
 
 const Home = () => {
     const [refreshing, setRefreshing] = useState<boolean>(false);
@@ -28,37 +26,10 @@ const Home = () => {
 
     return (
         <SafeAreaView style={styles.container}>
-            <View style={{
-                height: '100%',
-                backgroundColor: 'white',
-                position: 'relative',
-            }}>
-                <StatusBar
-                    backgroundColor="white"
-                    barStyle="dark-content"
-                    animated={true}
-                />
-                <View
-                    style={{
-                        justifyContent: 'space-between',
-                        flexDirection: 'row',
-                        paddingHorizontal: 15,
-                        alignItems: 'center',
-                        // backgroundColor: '#000'
-                    }}>
-                    <FontAwesome name="plus-square-o" style={{ fontSize: 24 }} />
-                    <Text
-                        style={{
-                            fontFamily: 'Lobster-Regular',
-                            fontSize: 25,
-                            fontWeight: '500',
-                        }}>
-                        OnlyPost
-                    </Text>
-                    <Feather name="navigation" style={{ fontSize: 24 }} />
-                </View>
+            <View style={styles.wrapper}>
+                <StatusBar backgroundColor="white" barStyle="dark-content" animated={true} />
+                <Title />
                 <SearchBox />
-
                 <FlashList
                     data={simpleUser}
                     renderItem={(data => (
@@ -82,6 +53,11 @@ export default Home
 const styles = StyleSheet.create({
     container: {
         display: 'flex',
+    },
+    wrapper: {
+        height: '100%',
+        backgroundColor: 'white',
+        position: 'relative',
     },
     head: {
         display: 'flex',
