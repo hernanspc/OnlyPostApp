@@ -26,9 +26,12 @@ export const useUserHook = () => {
 
         const { data: result } = await fetchUsers()
         const filtered = result.filter((user: UsersResponse) => user.id <= 5);
-        const usersPostsPromises = filtered.map((user: { id: string; }) => {
-            // const 
-            return getPostsOfUser(user.id)
+        const usersPostsPromises = filtered.map(async (user: { id: string; }) => {
+            const { data } = await getPostsOfUser(user.id)
+            const arrayPosts = data.map((e: any) => (
+                { ...e, imagenPublicacion: `https://res.cloudinary.com/dd0myqhyb/image/upload/v1662351177/OnlyPost/post/post${e.id}.jpg` }
+            ));
+            return arrayPosts
         })
 
         let allRealPosts: PostResponse[] = []
