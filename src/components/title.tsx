@@ -5,22 +5,9 @@ import FontAwesome from "react-native-vector-icons/FontAwesome";
 
 const Title = () => {
     return (
-        <View style={{
-            justifyContent: 'space-between',
-            flexDirection: 'row',
-            paddingHorizontal: 15,
-            alignItems: 'center',
-            // backgroundColor: '#000'
-        }}>
+        <View style={styles.container}>
             <FontAwesome name="plus-square-o" style={{ fontSize: 24 }} />
-            <Text
-                style={{
-                    fontFamily: 'Lobster-Regular',
-                    fontSize: 25,
-                    fontWeight: '500',
-                }}>
-                OnlyPost
-            </Text>
+            <Text style={styles.titleText}> OnlyPost </Text>
             <Feather name="navigation" style={{ fontSize: 24 }} />
         </View>
     )
@@ -28,4 +15,16 @@ const Title = () => {
 
 export default Title
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    container: {
+        justifyContent: 'space-between',
+        flexDirection: 'row',
+        paddingHorizontal: 15,
+        alignItems: 'center',
+    },
+    titleText: {
+        fontFamily: 'Lobster-Regular',
+        fontSize: 25,
+        fontWeight: '500',
+    }
+})
