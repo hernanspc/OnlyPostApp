@@ -23,5 +23,4 @@ describe('Testing Component SearchBox', () => {
     test('should Text render', () => {
         expect(wrapper.children().find('Text')).toHaveLength(12);
     });
-
 }); 
